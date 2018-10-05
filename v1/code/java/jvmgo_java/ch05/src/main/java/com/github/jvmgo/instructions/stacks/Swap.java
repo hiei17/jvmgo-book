@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.stacks;
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
-import com.github.jvmgo.rtda.Zframe;
 import com.github.jvmgo.rtda.OperandStack;
+import com.github.jvmgo.rtda.Zframe;
 
 public class Swap extends NoOperandsInstruction {
     @Override
@@ -15,3 +15,5 @@ public class Swap extends NoOperandsInstruction {
         operandStack.push(pop2);
     }
 }
+
+

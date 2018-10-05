@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.math;
 
 import com.github.jvmgo.instructions.base.Instruction;
-import com.github.jvmgo.rtda.Zframe;
 import com.github.jvmgo.rtda.LocalVars;
+import com.github.jvmgo.rtda.Zframe;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**

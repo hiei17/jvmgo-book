@@ -1,9 +1,9 @@
 package com.github.jvmgo.instructions.math;
 
-import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.instructions.base.DateTypeEnum;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.rtda.OperandStack;
+import com.github.jvmgo.rtda.Zframe;
 
 
 public class MathOperator extends NoOperandsInstruction {

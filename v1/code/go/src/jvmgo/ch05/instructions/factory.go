@@ -30,22 +30,27 @@ var (
 	fconst_2    = &FCONST_2{}
 	dconst_0    = &DCONST_0{}
 	dconst_1    = &DCONST_1{}
+
 	iload_0     = &ILOAD_0{}
 	iload_1     = &ILOAD_1{}
 	iload_2     = &ILOAD_2{}
 	iload_3     = &ILOAD_3{}
+
 	lload_0     = &LLOAD_0{}
 	lload_1     = &LLOAD_1{}
 	lload_2     = &LLOAD_2{}
 	lload_3     = &LLOAD_3{}
+
 	fload_0     = &FLOAD_0{}
 	fload_1     = &FLOAD_1{}
 	fload_2     = &FLOAD_2{}
 	fload_3     = &FLOAD_3{}
+
 	dload_0     = &DLOAD_0{}
 	dload_1     = &DLOAD_1{}
 	dload_2     = &DLOAD_2{}
 	dload_3     = &DLOAD_3{}
+
 	aload_0     = &ALOAD_0{}
 	aload_1     = &ALOAD_1{}
 	aload_2     = &ALOAD_2{}
@@ -62,18 +67,22 @@ var (
 	istore_1 = &ISTORE_1{}
 	istore_2 = &ISTORE_2{}
 	istore_3 = &ISTORE_3{}
+
 	lstore_0 = &LSTORE_0{}
 	lstore_1 = &LSTORE_1{}
 	lstore_2 = &LSTORE_2{}
 	lstore_3 = &LSTORE_3{}
+
 	fstore_0 = &FSTORE_0{}
 	fstore_1 = &FSTORE_1{}
 	fstore_2 = &FSTORE_2{}
 	fstore_3 = &FSTORE_3{}
+
 	dstore_0 = &DSTORE_0{}
 	dstore_1 = &DSTORE_1{}
 	dstore_2 = &DSTORE_2{}
 	dstore_3 = &DSTORE_3{}
+
 	astore_0 = &ASTORE_0{}
 	astore_1 = &ASTORE_1{}
 	astore_2 = &ASTORE_2{}
@@ -88,17 +97,21 @@ var (
 	// sastore  = &SASTORE{}
 	pop     = &POP{}
 	pop2    = &POP2{}
+
 	dup     = &DUP{}
 	dup_x1  = &DUP_X1{}
 	dup_x2  = &DUP_X2{}
 	dup2    = &DUP2{}
 	dup2_x1 = &DUP2_X1{}
 	dup2_x2 = &DUP2_X2{}
+
 	swap    = &SWAP{}
+
 	iadd    = &IADD{}
 	ladd    = &LADD{}
 	fadd    = &FADD{}
 	dadd    = &DADD{}
+
 	isub    = &ISUB{}
 	lsub    = &LSUB{}
 	fsub    = &FSUB{}
@@ -115,6 +128,7 @@ var (
 	lrem    = &LREM{}
 	frem    = &FREM{}
 	drem    = &DREM{}
+
 	ineg    = &INEG{}
 	lneg    = &LNEG{}
 	fneg    = &FNEG{}
@@ -131,21 +145,27 @@ var (
 	lor     = &LOR{}
 	ixor    = &IXOR{}
 	lxor    = &LXOR{}
+
 	i2l     = &I2L{}
 	i2f     = &I2F{}
 	i2d     = &I2D{}
+
 	l2i     = &L2I{}
 	l2f     = &L2F{}
 	l2d     = &L2D{}
+
 	f2i     = &F2I{}
 	f2l     = &F2L{}
 	f2d     = &F2D{}
+
 	d2i     = &D2I{}
 	d2l     = &D2L{}
 	d2f     = &D2F{}
+
 	i2b     = &I2B{}
 	i2c     = &I2C{}
 	i2s     = &I2S{}
+
 	lcmp    = &LCMP{}
 	fcmpl   = &FCMPL{}
 	fcmpg   = &FCMPG{}
@@ -198,10 +218,12 @@ func NewInstruction(opcode byte) base.Instruction {
 		return dconst_0
 	case 0x0f:
 		return dconst_1
+
 	case 0x10:
 		return &BIPUSH{}
 	case 0x11:
 		return &SIPUSH{}
+
 	// case 0x12:
 	// 	return &LDC{}
 	// case 0x13:
@@ -356,8 +378,10 @@ func NewInstruction(opcode byte) base.Instruction {
 		return dup2_x1
 	case 0x5e:
 		return dup2_x2
+
 	case 0x5f:
 		return swap
+
 	case 0x60:
 		return iadd
 	case 0x61:
@@ -366,6 +390,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return fadd
 	case 0x63:
 		return dadd
+
 	case 0x64:
 		return isub
 	case 0x65:
@@ -374,6 +399,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return fsub
 	case 0x67:
 		return dsub
+
 	case 0x68:
 		return imul
 	case 0x69:
@@ -382,6 +408,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return fmul
 	case 0x6b:
 		return dmul
+
 	case 0x6c:
 		return idiv
 	case 0x6d:
@@ -390,6 +417,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return fdiv
 	case 0x6f:
 		return ddiv
+
 	case 0x70:
 		return irem
 	case 0x71:
@@ -398,6 +426,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return frem
 	case 0x73:
 		return drem
+
 	case 0x74:
 		return ineg
 	case 0x75:
@@ -406,6 +435,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return fneg
 	case 0x77:
 		return dneg
+
 	case 0x78:
 		return ishl
 	case 0x79:
@@ -418,6 +448,7 @@ func NewInstruction(opcode byte) base.Instruction {
 		return iushr
 	case 0x7d:
 		return lushr
+
 	case 0x7e:
 		return iand
 	case 0x7f:

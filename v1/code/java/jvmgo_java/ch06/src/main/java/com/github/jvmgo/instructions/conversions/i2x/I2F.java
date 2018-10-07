@@ -2,8 +2,8 @@ package com.github.jvmgo.instructions.conversions.i2x;
 
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
  * Author: zhangxin
@@ -12,7 +12,7 @@ import com.github.jvmgo.rtda.Zframe;
  */
 public class I2F extends NoOperandsInstruction {
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         OperandStack stack = frame.getOperandStack();
         int val1 = stack.popInt();
         float val2 = (float) val1;

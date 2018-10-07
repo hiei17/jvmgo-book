@@ -1,5 +1,6 @@
 package com.github.jvmgo.rtda;
 
+import com.github.jvmgo.rtda.heap.JObject;
 import com.github.jvmgo.util.Util;
 
 /**
@@ -10,10 +11,13 @@ import com.github.jvmgo.util.Util;
 public class Slot {
 
    public byte[] bytes=new byte[4];
-   public Object ref=new Object();
+   public JObject ref;
 
    @Override
    public String toString() {
+      if (ref!=null){
+         return ref+"";
+      }
       return Util.byteToInt(bytes)+"" ;
 
    }

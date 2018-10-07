@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.math;
 
 import com.github.jvmgo.instructions.base.Instruction;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.LocalVars;
-import com.github.jvmgo.rtda.Zframe;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
@@ -20,7 +20,7 @@ public class Iinc implements Instruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         LocalVars localVars = frame.getLocalVars();
         int newVal = localVars.getInt(index) + add;
         localVars.setInt(index,newVal);

@@ -7,7 +7,7 @@ import com.github.jvmgo.instructions.base.DateTypeEnum;
 import com.github.jvmgo.instructions.base.Index8Instruction;
 import com.github.jvmgo.instructions.base.Instruction;
 import com.github.jvmgo.instructions.math.Iinc;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
@@ -73,7 +73,7 @@ public class Wide implements com.github.jvmgo.instructions.base.Instruction {
 
     //wide指令只是增加了索引宽度，并不改变子指令操作，所以其Execute() 方法只要调用子指令的Execute()方法即可
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         modifiedInstruction.execute(frame);
     }
 }

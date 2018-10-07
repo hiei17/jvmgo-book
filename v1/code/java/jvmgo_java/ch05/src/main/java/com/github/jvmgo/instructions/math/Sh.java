@@ -2,8 +2,8 @@ package com.github.jvmgo.instructions.math;
 
 import com.github.jvmgo.instructions.base.DateTypeEnum;
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
 位移
@@ -23,7 +23,7 @@ public class Sh extends NoOperandsInstruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         OperandStack operandStack = frame.getOperandStack();
         int s = operandStack.popInt();
         switch (typeEnum){

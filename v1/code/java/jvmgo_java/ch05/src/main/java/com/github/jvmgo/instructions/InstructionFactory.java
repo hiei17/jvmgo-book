@@ -94,25 +94,25 @@ public class InstructionFactory {
     private static Store istore_2 = new Store(DateTypeEnum.i, 2);
     private static Store istore_3 = new Store(DateTypeEnum.i, 3);
 
-    private static Store lstore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store lstore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store lstore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store lstore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store lstore_0 = new Store(DateTypeEnum.l, 0);
+    private static Store lstore_1 = new Store(DateTypeEnum.l, 1);
+    private static Store lstore_2 = new Store(DateTypeEnum.l, 2);
+    private static Store lstore_3 = new Store(DateTypeEnum.l, 3);
 
-    private static Store fstore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store fstore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store fstore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store fstore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store fstore_0 = new Store(DateTypeEnum.f, 0);
+    private static Store fstore_1 = new Store(DateTypeEnum.f, 1);
+    private static Store fstore_2 = new Store(DateTypeEnum.f, 2);
+    private static Store fstore_3 = new Store(DateTypeEnum.f, 3);
 
-    private static Store dstore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store dstore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store dstore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store dstore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store dstore_0 = new Store(DateTypeEnum.d, 0);
+    private static Store dstore_1 = new Store(DateTypeEnum.d, 1);
+    private static Store dstore_2 = new Store(DateTypeEnum.d, 2);
+    private static Store dstore_3 = new Store(DateTypeEnum.d, 3);
 
-    private static Store astore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store astore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store astore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store astore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store astore_0 = new Store(DateTypeEnum.a, 0);
+    private static Store astore_1 = new Store(DateTypeEnum.a, 1);
+    private static Store astore_2 = new Store(DateTypeEnum.a, 2);
+    private static Store astore_3 = new Store(DateTypeEnum.a, 3);
     private static Instruction pop = new Dup(0, 1);
     private static Instruction pop2 = new Dup(0, 2);
 

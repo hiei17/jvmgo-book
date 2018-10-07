@@ -13,25 +13,19 @@ import com.github.jvmgo.util.BytecodeReader;
  * }
  *
  */
-public class ConstantMemberrefInfo implements ConstantInfo{
+public class ConstantMemberrefInfo implements ConstantInfo {
 
-    private ConstantPool constPool;
+    protected ConstantPool constPool;
 
-    private int classIndex;
-    private int nameAndTypeIndex;
+    protected int classIndex;
+    protected int nameAndTypeIndex;
+
 
     public ConstantMemberrefInfo(ConstantPool aConstPool, BytecodeReader reader) {
         this.classIndex = reader.nextU2ToInt();
         this.nameAndTypeIndex = reader.nextU2ToInt();
         this.constPool = aConstPool;
     }
-
-    @Override
-    public String getValue() {
-
-        return constPool.getUTF8(classIndex)+" "+constPool.getUTF8(nameAndTypeIndex);
-    }
-
 
 
     @Override
@@ -43,5 +37,14 @@ public class ConstantMemberrefInfo implements ConstantInfo{
                  constClassInfo +"  "+
                   nameAndTypeInfo +
                 '}';
+    }
+
+    protected String name;
+    protected String type;
+
+    protected void  resolveNameAndType() {
+        ConstantNameAndTypeInfo nameAndTypeInfo= (ConstantNameAndTypeInfo) constPool.getContantInfo(nameAndTypeIndex);
+        name=nameAndTypeInfo.getName();
+        type=nameAndTypeInfo.getType();
     }
 }

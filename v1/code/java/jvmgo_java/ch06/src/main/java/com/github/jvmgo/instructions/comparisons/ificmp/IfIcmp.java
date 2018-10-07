@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.comparisons.ificmp;
 
 
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
  * Author: zhangxin
@@ -10,7 +10,7 @@ import com.github.jvmgo.rtda.Zframe;
  * Desc:
  */
 public class IfIcmp {
-    static int[] _icmpPop(Zframe frame) {
+    static int[] _icmpPop(Frame frame) {
         OperandStack stack = frame.getOperandStack();
         int[] res = new int[2];
         res[1] = stack.popInt();

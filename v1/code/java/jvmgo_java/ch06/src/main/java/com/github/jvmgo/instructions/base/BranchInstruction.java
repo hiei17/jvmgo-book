@@ -4,7 +4,7 @@ package com.github.jvmgo.instructions.base;
  跳转指令
  */
 
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 public abstract class BranchInstruction implements Instruction{
@@ -16,7 +16,7 @@ public abstract class BranchInstruction implements Instruction{
         offSet=reader.nextU2ToShort();
     }
 
-    protected    void branch(Zframe frame) {
+    protected    void branch(Frame frame) {
         int pc = frame.getThread().getPc();
         int nextPC = pc + offSet;
         frame.setNextPC(nextPC);

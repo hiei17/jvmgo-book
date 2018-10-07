@@ -2,13 +2,10 @@ package com.github.jvmgo.instructions.constants;
 
 
 import com.github.jvmgo.instructions.base.Instruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
-/**
- * @Author: panda
- * @Date: 2018/10/4 0004 20:37
- */
+//从操作数中获取一个byte型整数，扩展成int型，然后推入栈顶
 public class Bipush implements Instruction {
     private Integer val;
     @Override
@@ -17,7 +14,7 @@ public class Bipush implements Instruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         frame.getOperandStack().push(val);
     }
 }

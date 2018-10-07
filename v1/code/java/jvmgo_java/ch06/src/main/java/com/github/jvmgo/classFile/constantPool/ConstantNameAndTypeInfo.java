@@ -24,14 +24,20 @@ public class ConstantNameAndTypeInfo implements ConstantInfo{
         this.constPool = aConstPool;
     }
 
-    @Override
-    public String getValue() {
-        return "";
-    }
+
 
     @Override
     public String toString() {
 
       return   this.constPool.getUTF8(this.nameIndex)+"&"+this.constPool.getUTF8(this.descriptorIndex);
+    }
+
+
+    public String getName() {
+        return constPool.getUTF8(this.nameIndex);
+    }
+
+    public String getType() {
+        return constPool.getUTF8(this.descriptorIndex);
     }
 }

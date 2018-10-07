@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.comparisons.ifacmp;
 
 
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
  * Author: zhangxin
@@ -10,7 +10,7 @@ import com.github.jvmgo.rtda.Zframe;
  * Desc:
  */
 public class IfAcmp {
-    public static boolean _acmp(Zframe frame) {
+    public static boolean _acmp(Frame frame) {
         OperandStack stack = frame.getOperandStack();
         Object ref2 = stack.popRef();
         Object ref1 = stack.popRef();

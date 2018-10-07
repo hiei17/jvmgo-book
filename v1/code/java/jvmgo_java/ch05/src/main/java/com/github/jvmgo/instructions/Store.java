@@ -2,11 +2,11 @@ package com.github.jvmgo.instructions;
 
 import com.github.jvmgo.instructions.base.DateTypeEnum;
 import com.github.jvmgo.instructions.base.Index8Instruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
- 存储指令把变量从操作数栈顶弹出，然后存入局部变量表。
+ 存储指令把变量从 操作数栈 顶弹出，然后存入 局部变量表。
  */
 public class Store extends Index8Instruction {
     private DateTypeEnum dateTypeEnum;
@@ -29,7 +29,7 @@ public class Store extends Index8Instruction {
     }
 
     @Override
-    public   void execute(Zframe frame ) {
+    public   void execute(Frame frame ) {
         switch (dateTypeEnum){
 
             case a:

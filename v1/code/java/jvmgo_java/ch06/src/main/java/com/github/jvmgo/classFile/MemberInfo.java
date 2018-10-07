@@ -3,11 +3,10 @@ package com.github.jvmgo.classFile;
 
 import com.github.jvmgo.classFile.attributeInfo.AttributeInfo;
 import com.github.jvmgo.classFile.attributeInfo.CodeAttribute;
+import com.github.jvmgo.classFile.attributeInfo.ConstantValueAttribute;
 import com.github.jvmgo.classFile.constantPool.ConstantPool;
 import com.github.jvmgo.util.BytecodeReader;
 import lombok.Getter;
-
-import java.util.Arrays;
 
 /*
 
@@ -32,9 +31,9 @@ public class MemberInfo {
     private int  descriptorIndex ;
     private AttributeInfo[] attributes    ;
 
-    private String name;
-    private String descriptor;
-    private CodeAttribute codeAttribute;
+
+
+
 
 
     public MemberInfo(ConstantPool constantPool, BytecodeReader reader) {
@@ -47,36 +46,46 @@ public class MemberInfo {
 
     public static MemberInfo[] readMembers(ConstantPool constantPool, BytecodeReader reader) {
         int  fieldCount=reader.nextU2ToInt();
-        MemberInfo[] fields=new MemberInfo[fieldCount];
+        MemberInfo[] memberInfos=new MemberInfo[fieldCount];
 
         for (int i=0;i<fieldCount;i++){
-            fields[i]=new MemberInfo(constantPool,reader);
+            memberInfos[i]=new MemberInfo(constantPool,reader);
         }
 
-        return fields;
+        return memberInfos;
     }
 
     public String getName() {
-        if (name==null) {
-            name=cp.getUTF8(nameIndex);
-        }
-        return name;
+
+            return cp.getUTF8(nameIndex);
+
     }
 
     public String getDescriptor() {
-        if (descriptor==null) {
-            descriptor =cp.getUTF8(descriptorIndex);
-        }
-        return descriptor;
+
+            return cp.getUTF8(descriptorIndex);
+
 
     }
 
     public CodeAttribute getCodeAttr() {
-        if (codeAttribute==null){
-            codeAttribute= (CodeAttribute) Arrays.stream(attributes)
-                    .filter(attributeInfo -> attributeInfo instanceof CodeAttribute)
-                    .findFirst().get();
+
+        for (AttributeInfo attribute : attributes) {
+            if(attribute instanceof CodeAttribute){
+                return (CodeAttribute) attribute;
+            }
         }
-        return codeAttribute;
+      return null;
     }
+
+
+    public int getConstantValueIndex() {
+        for (AttributeInfo attribute : attributes) {
+            if (attribute instanceof ConstantValueAttribute){
+                return ((ConstantValueAttribute) attribute).constantValueIndex;
+            }
+        }
+       return -99;
+    }
+
 }

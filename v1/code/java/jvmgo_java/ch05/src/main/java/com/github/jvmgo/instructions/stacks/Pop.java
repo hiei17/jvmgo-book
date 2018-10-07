@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.stacks;
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
  * @Author: panda
@@ -17,7 +17,7 @@ public class Pop extends NoOperandsInstruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         OperandStack operandStack = frame.getOperandStack();
         switch (popAmount){
             case 1:

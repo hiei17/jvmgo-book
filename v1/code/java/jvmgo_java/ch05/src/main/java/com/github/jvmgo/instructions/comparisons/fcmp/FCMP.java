@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.comparisons.fcmp;
 
 
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
  * Author: zhangxin
@@ -13,7 +13,7 @@ import com.github.jvmgo.rtda.Zframe;
  */
 public class FCMP {
 
-    static void _fcmp(Zframe frame, boolean flag) {
+    static void _fcmp(Frame frame, boolean flag) {
         OperandStack stack = frame.getOperandStack();
         float val2 = stack.popFloat();
         float val1 = stack.popFloat();

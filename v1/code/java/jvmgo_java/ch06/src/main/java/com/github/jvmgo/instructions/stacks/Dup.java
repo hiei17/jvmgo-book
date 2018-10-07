@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.stacks;
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class Dup extends NoOperandsInstruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         List dubObjects=new ArrayList();
         List moveObjects=new ArrayList();
         OperandStack operandStack = frame.getOperandStack();
@@ -32,6 +32,7 @@ public class Dup extends NoOperandsInstruction {
         for(int i=0;i<offset;i++){
             moveObjects.add(operandStack.pop());
         }
+        dubObjects.forEach(operandStack::push);
         dubObjects.forEach(operandStack::push);
         moveObjects.forEach(operandStack::push);
 

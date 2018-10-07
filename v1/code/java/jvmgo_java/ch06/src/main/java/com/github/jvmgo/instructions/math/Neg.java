@@ -3,7 +3,7 @@ package com.github.jvmgo.instructions.math;
 import com.github.jvmgo.instructions.base.DateTypeEnum;
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 //取反
 public class Neg extends NoOperandsInstruction {
@@ -14,7 +14,7 @@ public class Neg extends NoOperandsInstruction {
     }
 
     @Override
-    public void execute(Zframe frame){
+    public void execute(Frame frame){
         OperandStack operandStack = frame.getOperandStack();
         switch (typeEnum){
             case i:

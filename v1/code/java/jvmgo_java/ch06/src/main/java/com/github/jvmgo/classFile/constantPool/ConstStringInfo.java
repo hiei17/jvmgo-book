@@ -1,8 +1,10 @@
 package com.github.jvmgo.classFile.constantPool;
 
+import com.github.jvmgo.rtda.heap.CovertRuntimeConstant;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 import com.github.jvmgo.util.BytecodeReader;
 
-public class ConstStringInfo implements ConstantInfo{
+public class ConstStringInfo implements CovertRuntimeConstant {
 	private ConstantPool constPool;
 	private int nameIndex;
 
@@ -11,15 +13,17 @@ public class ConstStringInfo implements ConstantInfo{
 		this.constPool = aConstPool;
 	}
 
-	@Override
-	public String getValue() {
-		return this.constPool.getUTF8(this.nameIndex);
-	}
+
 
 	@Override
 	public String toString() {
 		return "ConstStringInfo{" +
 				"name=" + constPool.getUTF8(nameIndex) +
 				'}';
+	}
+
+	@Override
+	public Object getValue(RuntimeConstantPool runtimeConstantPool) {
+		return constPool.getUTF8(nameIndex);
 	}
 }

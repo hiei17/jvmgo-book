@@ -12,7 +12,7 @@ import com.github.jvmgo.util.BytecodeReader;
 public class ConstantValueAttribute implements AttributeInfo {
 
     //具体指向哪种常量因字段类型而异。
-   private int constantValueIndex;
+   public int constantValueIndex;
 
     @Override
     public AttributeInfo readInfo(BytecodeReader reader) {

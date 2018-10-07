@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.extended;
 
 
 import com.github.jvmgo.instructions.base.BranchInstruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 /**
  * Author: zhangxin
@@ -11,7 +11,7 @@ import com.github.jvmgo.rtda.Zframe;
  */
 public class IFNONNULL extends BranchInstruction {
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         Object ref = frame.getOperandStack().popRef();
         if (ref != null) {
             super.branch(frame);

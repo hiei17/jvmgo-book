@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.comparisons.ificmp;
 
 
 import com.github.jvmgo.instructions.base.BranchInstruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 /**
  * Author: zhangxin
@@ -11,7 +11,7 @@ import com.github.jvmgo.rtda.Zframe;
  */
 public class IF_ICMPLE extends BranchInstruction {
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         int[] res = IfIcmp._icmpPop(frame);
         int val1 = res[0];
         int val2 = res[1];

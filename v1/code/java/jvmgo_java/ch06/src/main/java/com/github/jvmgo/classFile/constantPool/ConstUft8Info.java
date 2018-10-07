@@ -13,10 +13,7 @@ public class ConstUft8Info implements ConstantInfo{
 
 	}
 
-	@Override
-	public String getValue() {
-		return this.value;
-	}
+
 
 	@Override
 	public String toString() {

@@ -1,8 +1,8 @@
 package com.github.jvmgo.instructions.comparisons;
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
 
 /**
  * @Author: panda
@@ -10,7 +10,7 @@ import com.github.jvmgo.rtda.Zframe;
  */
 public class LCMP extends NoOperandsInstruction {
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         OperandStack stack = frame.getOperandStack();
         long val2 = stack.popLong();
         long val1 = stack.popLong();

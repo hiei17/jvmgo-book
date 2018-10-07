@@ -12,20 +12,20 @@ public class Thread {
 
 
     private int pc;
-    //Java虚拟机栈 由栈帧（Stack Zframe，简称帧）构成，一方法一帧
+    //Java虚拟机栈 由栈帧（Stack Frame，简称帧）构成，一方法一帧
     private JVMStack jvmStack=new JVMStack();
 
 
 
-   public  void pushFrame( Zframe frame) {
+   public  void pushFrame( Frame frame) {
        frame.setThread(this);
        jvmStack.push(frame);
     }
-    public Zframe popFrame()  {
+    public Frame popFrame()  {
         return jvmStack.pop();
     }
 
-    public Zframe currentFrame()  {
+    public Frame currentFrame()  {
         return jvmStack.top();
     }
 }

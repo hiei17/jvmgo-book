@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.comparisons.fcmp;
 
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 /**
  * Author: zhangxin
@@ -11,7 +11,7 @@ import com.github.jvmgo.rtda.Zframe;
  */
 public class FCMPG extends NoOperandsInstruction {
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         FCMP._fcmp(frame, true);
     }
 }

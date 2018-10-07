@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.extended;
 
 
 import com.github.jvmgo.instructions.base.BranchInstruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
@@ -19,7 +19,7 @@ public class GOTO_W extends BranchInstruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         super.branch(frame);
     }
 }

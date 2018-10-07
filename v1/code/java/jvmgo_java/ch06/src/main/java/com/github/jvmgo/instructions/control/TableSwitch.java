@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.control;
 
 
 import com.github.jvmgo.instructions.base.BranchInstruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
@@ -35,7 +35,7 @@ public class TableSwitch extends BranchInstruction {
     }
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
 
         int index = frame.getOperandStack().popInt();
 

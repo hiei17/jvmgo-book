@@ -6,7 +6,7 @@ import com.github.jvmgo.util.BytecodeReader;
  操作数为索引 取常量池
  */
 public abstract class Index16Instruction implements Instruction {
-  private int index ;//常量池索引
+  protected int index ;//常量池索引
 
 
     @Override

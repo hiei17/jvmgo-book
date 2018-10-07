@@ -2,7 +2,7 @@ package com.github.jvmgo.instructions.comparisons.dcmp;
 
 
 import com.github.jvmgo.rtda.OperandStack;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 /**
  * Author: zhangxin
@@ -12,7 +12,7 @@ import com.github.jvmgo.rtda.Zframe;
  * 当两个float变量中至少有一个是NaN时，用fcmpg指令比较的结果是1，而用fcmpl指令比较的结果是-1。
  */
 public class DCMP {
-    static void _dcmp(Zframe frame, boolean flag) {
+    static void _dcmp(Frame frame, boolean flag) {
         OperandStack stack = frame.getOperandStack();
         double val2 = stack.popDouble();
         double val1 = stack.popDouble();

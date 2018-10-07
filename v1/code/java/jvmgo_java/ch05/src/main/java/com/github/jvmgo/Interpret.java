@@ -5,7 +5,7 @@ import com.github.jvmgo.classFile.attributeInfo.CodeAttribute;
 import com.github.jvmgo.instructions.InstructionFactory;
 import com.github.jvmgo.instructions.base.Instruction;
 import com.github.jvmgo.rtda.Thread;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 
@@ -18,7 +18,7 @@ public class Interpret {
         int maxStack = codeAttr.getMaxStack();
         byte[] bytes = codeAttr.getCode();
 
-        Zframe frame = new Zframe(maxLocals, maxStack);
+        Frame frame = new Frame(maxLocals, maxStack);
         Thread thread = new Thread();
         thread.pushFrame(frame);
 
@@ -27,7 +27,7 @@ public class Interpret {
 
     private void loop(Thread thread, byte[] bytecode) {
 
-        Zframe frame = thread.popFrame();
+        Frame frame = thread.popFrame();
         BytecodeReader reader = new BytecodeReader();
         int opcode=0;
         try {

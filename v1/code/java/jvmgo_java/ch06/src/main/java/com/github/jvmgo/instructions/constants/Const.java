@@ -3,7 +3,7 @@ package com.github.jvmgo.instructions.constants;
 
 import com.github.jvmgo.instructions.base.DateTypeEnum;
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 
 /**
  把隐含在操作码中的常量值推入操作数栈顶。
@@ -47,7 +47,7 @@ public class Const extends NoOperandsInstruction {
 
 
     @Override
-    public void execute(Zframe frame) {
+    public void execute(Frame frame) {
         switch (dateTypeEnum){
 
                 case a:
@@ -65,91 +65,91 @@ public class Const extends NoOperandsInstruction {
 
     /*public static class A_NULL {
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushRef(null);
         }
     }
     public static class cM1 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(-1);
         }
     }
     public static class I0 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(0);
         }
     }
     public static class I1 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(1);
         }
     }
     public static class I2 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(2);
         }
     }
     public static class I3 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(3);
         }
     }
     public static class I4 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(4);
         }
     }
     public static class I5 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushInt(5);
         }
     }
     public static class L0 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushLong(0);
         }
     }
     public static class L1 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushLong(1);
         }
     }
     public static class F0 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushFloat(0.0f);
         }
     }
     public static class F1 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushFloat(1.0f);
         }
     }
     public static class F2 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushFloat(2.0f);
         }
     }
     public static class D0 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushDouble(0.0);
         }
     }
     public static class D1 extends NoOperandsInstruction{
         @Override
-        public void execute(Zframe frame) {
+        public void execute(Frame frame) {
             frame.getOperandStack().pushDouble(0.0);
         }
     }*/

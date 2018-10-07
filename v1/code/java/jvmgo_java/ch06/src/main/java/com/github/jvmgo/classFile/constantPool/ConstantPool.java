@@ -14,6 +14,7 @@ public class ConstantPool {
 		constantInfos = new  ConstantInfo[constantPoolSize];
 		for(int i = 1; i < constantPoolSize ; i++) {
 			int tag = reader.nextU1toInt();
+			//多态
 			ConstantInfo constInfo = ConstantInfo.createConstantInfo(tag, reader,this);
 			constantInfos[i]=constInfo;
 
@@ -23,12 +24,21 @@ public class ConstantPool {
 		}
 	}
 	
-	
-
-	
-	
 	public String getUTF8(int index) {
 		ConstantInfo constInfo = this.constantInfos[index];
 		return constInfo == null ? ""  :constInfo.toString();
+	}
+
+	public String getClassName(int classNameIndex) {
+		if (classNameIndex==0){
+			return "";
+		}
+		ConstClassInfo constantInfo = (ConstClassInfo) constantInfos[classNameIndex];
+		int nameIndex = constantInfo.getNameIndex();
+		return getUTF8(nameIndex);
+	}
+
+	public ConstantInfo getContantInfo(int index){
+		return constantInfos[index];
 	}
 }

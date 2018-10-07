@@ -11,11 +11,10 @@ import com.github.jvmgo.instructions.comparisons.ifacmp.IF_ACMPEQ;
 import com.github.jvmgo.instructions.comparisons.ifacmp.IF_ACMPNE;
 import com.github.jvmgo.instructions.comparisons.ifcond.*;
 import com.github.jvmgo.instructions.comparisons.ificmp.*;
-import com.github.jvmgo.instructions.constants.Bipush;
-import com.github.jvmgo.instructions.constants.Const;
-import com.github.jvmgo.instructions.constants.Nop;
-import com.github.jvmgo.instructions.constants.Sipush;
-import com.github.jvmgo.instructions.control.*;
+import com.github.jvmgo.instructions.constants.*;
+import com.github.jvmgo.instructions.control.Goto;
+import com.github.jvmgo.instructions.control.LookUpSwitch;
+import com.github.jvmgo.instructions.control.TableSwitch;
 import com.github.jvmgo.instructions.conversions.d2x.D2F;
 import com.github.jvmgo.instructions.conversions.d2x.D2I;
 import com.github.jvmgo.instructions.conversions.d2x.D2L;
@@ -31,6 +30,7 @@ import com.github.jvmgo.instructions.extended.IFNONNULL;
 import com.github.jvmgo.instructions.extended.IFNULL;
 import com.github.jvmgo.instructions.extended.Wide;
 import com.github.jvmgo.instructions.math.*;
+import com.github.jvmgo.instructions.references.*;
 import com.github.jvmgo.instructions.stacks.Dup;
 import com.github.jvmgo.instructions.stacks.Swap;
 
@@ -94,25 +94,25 @@ public class InstructionFactory {
     private static Store istore_2 = new Store(DateTypeEnum.i, 2);
     private static Store istore_3 = new Store(DateTypeEnum.i, 3);
 
-    private static Store lstore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store lstore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store lstore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store lstore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store lstore_0 = new Store(DateTypeEnum.l, 0);
+    private static Store lstore_1 = new Store(DateTypeEnum.l, 1);
+    private static Store lstore_2 = new Store(DateTypeEnum.l, 2);
+    private static Store lstore_3 = new Store(DateTypeEnum.l, 3);
 
-    private static Store fstore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store fstore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store fstore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store fstore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store fstore_0 = new Store(DateTypeEnum.f, 0);
+    private static Store fstore_1 = new Store(DateTypeEnum.f, 1);
+    private static Store fstore_2 = new Store(DateTypeEnum.f, 2);
+    private static Store fstore_3 = new Store(DateTypeEnum.f, 3);
 
-    private static Store dstore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store dstore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store dstore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store dstore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store dstore_0 = new Store(DateTypeEnum.d, 0);
+    private static Store dstore_1 = new Store(DateTypeEnum.d, 1);
+    private static Store dstore_2 = new Store(DateTypeEnum.d, 2);
+    private static Store dstore_3 = new Store(DateTypeEnum.d, 3);
 
-    private static Store astore_0 = new Store(DateTypeEnum.i, 0);
-    private static Store astore_1 = new Store(DateTypeEnum.i, 1);
-    private static Store astore_2 = new Store(DateTypeEnum.i, 2);
-    private static Store astore_3 = new Store(DateTypeEnum.i, 3);
+    private static Store astore_0 = new Store(DateTypeEnum.a, 0);
+    private static Store astore_1 = new Store(DateTypeEnum.a, 1);
+    private static Store astore_2 = new Store(DateTypeEnum.a, 2);
+    private static Store astore_3 = new Store(DateTypeEnum.a, 3);
     private static Instruction pop = new Dup(0, 1);
     private static Instruction pop2 = new Dup(0, 2);
 
@@ -240,6 +240,13 @@ public class InstructionFactory {
                 return new Bipush();
             case 0x11:
                 return new Sipush();
+
+            case 0x12:
+                return new Ldc(false,false) ;
+            case 0x13:
+                return new Ldc(true,false);
+            case 0x14:
+                return new Ldc(true,true);
 
             //从局部变量表获取变量，然后推入操作数栈顶
             case 0x15:
@@ -578,7 +585,25 @@ public class InstructionFactory {
                 return new TableSwitch();
             case 0xab:
                 return new LookUpSwitch();
+            case 0xb2:
+                return new GetStatic();
+            case 0xb3:
+                return new PutStatic();
+            case 0xb4:
+                return new Getfield();
+            case 0xb5:
+                return new Putfield();
+            case 0xb6:
+                return new Invokevirtual();
+            case 0xb7:
+                return new Invokespecial();
+            case 0xbb:
+                return  new NewObject();
 
+            case 0xc0:
+                return new Checkcast();
+            case 0xc1:
+                return new Instanceof();
             //扩展
             case 0xc4:
                 return new Wide();

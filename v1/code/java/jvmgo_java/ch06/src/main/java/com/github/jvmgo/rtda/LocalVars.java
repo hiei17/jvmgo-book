@@ -1,5 +1,6 @@
 package com.github.jvmgo.rtda;
 
+import com.github.jvmgo.rtda.heap.JObject;
 import com.github.jvmgo.util.Util;
 
 
@@ -52,11 +53,11 @@ public class LocalVars {
         return  Util.byte2double( slots[index].bytes, slots[index+1].bytes );
     }
 
-    public void setRef(int index , Object ref) {
+    public void setRef(int index , JObject ref) {
         slots[index].ref = ref;
     }
 
-    public Object getRef(int index )  {
+    public JObject getRef(int index )  {
         return slots[index].ref;
     }
 

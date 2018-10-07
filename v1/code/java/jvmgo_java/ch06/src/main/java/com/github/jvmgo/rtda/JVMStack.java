@@ -13,10 +13,10 @@ public class JVMStack {
 
     private final static int maxSize=1024;
     private  int size=-1;
-    private Zframe[] stackFrames =new Zframe[maxSize];
+    private Frame[] stackFrames =new Frame[maxSize];
 
 
-    public void push(Zframe frame) {
+    public void push(Frame frame) {
         if (size>=maxSize){
             throw  new StackOverflowError();
         }
@@ -24,11 +24,11 @@ public class JVMStack {
 
     }
 
-    public Zframe pop() {
+    public Frame pop() {
         return stackFrames[size--];
     }
 
-    public Zframe top() {
+    public Frame top() {
         return stackFrames[size];
     }
 }

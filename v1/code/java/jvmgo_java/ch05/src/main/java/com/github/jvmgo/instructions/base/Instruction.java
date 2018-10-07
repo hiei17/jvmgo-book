@@ -1,6 +1,6 @@
 package com.github.jvmgo.instructions.base;
 
-import com.github.jvmgo.rtda.Zframe;
+import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
@@ -13,5 +13,5 @@ public interface Instruction {
     //从字节码中提取操作数
     void fetchOperands(BytecodeReader reader);
     //执行指令
-    void execute(Zframe frame);
+    void execute(Frame frame);
 }

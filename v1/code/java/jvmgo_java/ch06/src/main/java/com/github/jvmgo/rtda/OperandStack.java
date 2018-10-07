@@ -1,5 +1,7 @@
 package com.github.jvmgo.rtda;
 
+import com.github.jvmgo.rtda.heap.JObject;
+
 /**
  * 操作数栈
  */
@@ -35,8 +37,8 @@ public class OperandStack {
         return slot;
     }
 
-    public Object popRef() {
-       return pop();
+    public JObject popRef() {
+       return (JObject)pop();
     }
 
     public int popInt() {
@@ -56,8 +58,11 @@ public class OperandStack {
     @Override
     public String toString() {
         String s="[";
-        for (int i = 0; i < objects.length; i++) {
-            s =s+objects[i]+",  ";
+        for (int i = 0; i <nextIndex; i++) {
+
+
+                s =s+objects[i]+",  ";
+
 
         }
         return s+"]";

@@ -16,7 +16,7 @@ public class ClassFile {
 	private int accessFlag;
 	private int classNameIndex;
 	private int superClassNameIndex;
-	private int[] inerfaceindexes;
+	private int[] interfaceIndexes;
 	private MemberInfo[] fields;
 	private MemberInfo[] methods;
 	private BytecodeReader reader;
@@ -76,7 +76,7 @@ public class ClassFile {
 	}
 	
 	private void readInterfaceIndexes() {
-		inerfaceindexes=reader.nextUint16s();
+		interfaceIndexes =reader.nextUint16s();
 	}
 
 	private void readFields() {
@@ -88,4 +88,22 @@ public class ClassFile {
 	}
 
 
+	public String getClassName() {
+	 return 	constantPool.getClassName(classNameIndex);
+	}
+
+	public String getSuperClassName() {
+		return 	constantPool.getClassName(superClassNameIndex);
+	}
+
+	public String[] getInterfaceNames() {
+		int length = interfaceIndexes.length;
+		String[] interFaceName=new String[length];
+		for (int i = 0; i < length; i++) {
+			int index = interfaceIndexes[i];
+			String className = constantPool.getClassName(index);
+			interFaceName[i]=className;
+		}
+		return interFaceName;
+	}
 }

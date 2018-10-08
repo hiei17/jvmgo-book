@@ -15,11 +15,11 @@ public class MyClassLoader  {
     private Classpath classpath;
 
     //方法区
-    private Map<String, JClass> classInfoMap=new HashMap<>();
-
     public MyClassLoader(Classpath classpath) {
         this.classpath=classpath;
     }
+
+    private Map<String, JClass> classInfoMap=new HashMap<>();
 
     public JClass loadClass(String className){
 
@@ -27,7 +27,6 @@ public class MyClassLoader  {
 
         if (classInfo==null){
             classInfo=  loadNonArrayClass(className);
-            classInfoMap.put(className,classInfo);
         }
         return classInfo;
     }
@@ -72,7 +71,7 @@ public class MyClassLoader  {
         for (Field field : classInfo.getFields()) {
 
             if(field.isStatic()&&field.isFinal()){
-                initStaticFinalVar(staticVars,classInfo.runtimeConstantPool, field);
+                initStaticFinalVar(staticVars,classInfo.getRuntimeConstantPool(), field);
             }
         }
         classInfo.staticVars=staticVars;
@@ -107,15 +106,15 @@ public class MyClassLoader  {
 
         }
 
-        classInfo.setStaticSlotCount(slotId);
+        classInfo.staticSlotCount=slotId;
     }
 
     private void calcInstanceFieldSlotId(JClass classInfo) {
 
        int slotId =0;
 
-        if( classInfo.superClass != null) {
-            slotId += classInfo.superClass.instanceSlotCount;
+        if( classInfo.getSuperClass() != null) {
+            slotId += classInfo.getSuperClass().instanceSlotCount;
         }
         for (Field field : classInfo.getFields()) {
 
@@ -130,7 +129,7 @@ public class MyClassLoader  {
             }
 
         }
-        classInfo.setInstanceSlotCount(slotId);
+        classInfo.instanceSlotCount=slotId;
     }
 
     private JClass defineClass(byte[] data)  {
@@ -140,9 +139,9 @@ public class MyClassLoader  {
 
 
 
-        jClass.interfaces = resolveInterfaces(jClass.interfaceNames);
-        jClass.superClass = resolveSuperClass(jClass.superClassName);
-
+        jClass.interfaces = resolveInterfaces(jClass.getInterfaceNames());
+        jClass.superClass = resolveSuperClass(jClass.getSuperClassName());
+        classInfoMap.put(jClass.getName(),jClass);
         return jClass;
     }
 

@@ -8,7 +8,7 @@ public interface ConstantInfo {
      int CONST_TAG_CLASS = 7;
      int CONST_TAG_FIELD_REF = 9;
      int CONST_TAG_METHOD_REF = 10;
-     int CONST_TAG_INTERFACE_MTTHOD_REF = 11;
+     int CONST_TAG_INTERFACE_METHOD_REF = 11;
 
      int CONST_TAG_STRING = 8;
      int CONST_TAG_INTEGER = 3;
@@ -66,7 +66,7 @@ public interface ConstantInfo {
             case CONST_TAG_METHOD_REF:
                 constantInfo = new ConstantMethodRefInfo(constPool, reader);
                 break;
-            case CONST_TAG_INTERFACE_MTTHOD_REF:
+            case CONST_TAG_INTERFACE_METHOD_REF:
                 constantInfo = new ConstantMethodRefInfo(constPool, reader);
                 break;
 

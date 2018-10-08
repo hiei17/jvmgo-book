@@ -8,8 +8,13 @@ import com.github.jvmgo.rtda.heap.JClass;
 import com.github.jvmgo.rtda.heap.JObject;
 
 /**
- * @Author: panda
- * @Date: 2018/10/7 0007 19:13
+ object=stack.pop()
+ stack.push(object);
+ class=frame.method.class.runtimeConstantPool(操作数index);
+
+ if(!object.class isInstanceOf class){
+    throw new ClassCastException();
+ }
  */
 public class Checkcast extends Index16Instruction {
     @Override

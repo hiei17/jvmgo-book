@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class Field extends ClassMember {
 
-    public   int constValueIndex ;//classFile得 字段的初始值
+    int constValueIndex ;//classFile得 在属性里 字段的初始值index
 
 
     private   int slotId          ;//类加载时计算

@@ -6,7 +6,9 @@ import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 
 /**
-pop一个值 set进static field   ,field由操作数指定池index得
+ 根据操作数index去运行时常量池拿到field,弹出一个值set进field值
+ field=frame.method.class.runtimeConstantsPool[index]
+ field.class.staticVars[field.slotId]
  */
 public class PutStatic extends Index16Instruction {
     @Override

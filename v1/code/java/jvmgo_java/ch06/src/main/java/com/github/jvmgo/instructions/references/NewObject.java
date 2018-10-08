@@ -10,6 +10,15 @@ import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
  * @Author: panda
  * @Date: 2018/10/7 0007 18:24
  */
+
+/**
+ * class=frame.method.class.runtimeConstantPool(操作数index)
+ * newObject={
+ *     class
+ *     slot[class.instanceSlotCount]
+ * }
+ * frame.operandStack.push(newObject);
+ */
 public class NewObject extends Index16Instruction {
     @Override
     public void execute(Frame frame) {

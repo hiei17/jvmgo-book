@@ -8,10 +8,16 @@ import com.github.jvmgo.rtda.heap.JClass;
 import com.github.jvmgo.rtda.heap.JObject;
 
 /**
- * @Author: panda
- * @Date: 2018/10/7 0007 19:13
+ class=frame.method.class.runtimeConstantPool(操作数index);
+ stack=frame.operandStack;
+ object=stack.pop;
+ if(object.class isInstanceOf class){
+    stack.push(1);
+ }else{
+   stack.push(0);
+ }
  */
-//弹出一个对象引用 操作数是class在pool的index
+
 public class Instanceof extends Index16Instruction {
     @Override
     public void execute(Frame frame) {

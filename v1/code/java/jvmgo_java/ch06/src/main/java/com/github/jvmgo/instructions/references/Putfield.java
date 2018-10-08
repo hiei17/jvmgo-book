@@ -6,7 +6,16 @@ import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 
 /**
-pop一个值找到field 弹出值val 弹出对象引用  set对象 这个field 为val
+找到field 弹出值val 弹出对象引用  set对象 这个field 为val
+ */
+
+/**
+ stack=frame.operandStack;
+ val=stack.pop;
+ object=stack.pop;
+ field=frame.method.class.runtimeConstantsPool[指令操作数index]
+ object.slot[field.slotId]=val
+
  */
 public class Putfield extends Index16Instruction {
     @Override

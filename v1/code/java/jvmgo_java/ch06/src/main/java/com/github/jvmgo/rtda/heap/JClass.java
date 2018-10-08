@@ -1,7 +1,8 @@
 package com.github.jvmgo.rtda.heap;
 
 import com.github.jvmgo.classFile.ClassFile;
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.Getter;
 
 import java.util.Objects;
 
@@ -11,30 +12,26 @@ import static com.github.jvmgo.rtda.heap.Access_flags.*;
  * @Author: panda
  * @Date: 2018/10/6 0006 20:53
  */
-@Data
+@Getter
 public class JClass {
-
-    public int accessFlags;// uint16 类的访问标志
+    @Getter(AccessLevel.NONE)
+    private int accessFlags;// uint16 类的访问标志
 
     //完全限定名，具有java/lang/Object的形式
-    String name;//string // thisClassName
-    String superClassName; //string
-    String[] interfaceNames;// []string
+    private  String name;// thisClassName
+    private  String superClassName;
+    private  String[] interfaceNames;
+    private RuntimeConstantPool runtimeConstantPool;//存放运行时常量池指针
+    private Field[] fields;
+    private Method[] methods;
 
-    RuntimeConstantPool runtimeConstantPool;//存放运行时常量池指针
-
-    Field[] fields;
-    Method[] methods;
-
-/////////////////////////////////////////////////////////加载时填充的
-    public MyClassLoader classLoader;//
-    JClass superClass;
-    JClass[] interfaces;
-
-    int instanceSlotCount;
-    int staticSlotCount;
-
-  public   Object[] staticVars;
+/////////////////////////////////////////////////////////类加载里面时填充的
+    public MyClassLoader classLoader;//加载时保留加载器引用
+    public  JClass superClass;
+    public  JClass[] interfaces;
+    public int instanceSlotCount;
+    public int staticSlotCount;
+    public   Object[] staticVars;
 
 
     public JClass(ClassFile cf, MyClassLoader myClassLoader) {

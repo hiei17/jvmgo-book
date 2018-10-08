@@ -6,10 +6,12 @@ import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 
 /**
- * @Author: panda
- * @Date: 2018/10/7 0007 19:03
+ field=frame.method.class.runtimeConstantsPool[指令操作数index];
+ stack=frame.operandStack;
+ object=stack.pop;
+ stack.push(object.slot[field.slotId]);
  */
-//取出栈顶对象的field值 入栈 field 操作数指定
+
 public class Getfield extends Index16Instruction {
     @Override
     public void execute(Frame frame) {

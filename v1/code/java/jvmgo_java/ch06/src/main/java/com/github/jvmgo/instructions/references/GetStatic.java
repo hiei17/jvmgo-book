@@ -9,6 +9,8 @@ import com.github.jvmgo.rtda.heap.*;
  * @Author: panda
  * @Date: 2018/10/7 0007 19:03
  */
+//field=frame.method.class.runtimeConstantsPool[指令操作数index]
+    //frame.operandStack.push(field.class.staticVars[field.slotId])
 public class GetStatic extends Index16Instruction {
     @Override
     public void execute(Frame frame) {

@@ -27,6 +27,7 @@ public class ClassInitLogic {
         if (superClass != null ) {
             init(thread, superClass);
         }
+
     }
 }
 

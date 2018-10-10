@@ -12,6 +12,8 @@ import com.github.jvmgo.rtda.heap.ref.MethodRef;
  * @Author: panda
  * @Date: 2018/10/9 0009 11:18
  * 静态方法是静态绑定的，最终调用的是哪个方法在编译期就已经确定,调用前会检查类有没有初始化,没初始化先初始化再调用
+ * methodRef=frame.method.runTimeConstantPool.constant[index来自操作数]
+ * method=methodRef.method
  */
 public class Invokestatic extends Index16Instruction {
     @Override

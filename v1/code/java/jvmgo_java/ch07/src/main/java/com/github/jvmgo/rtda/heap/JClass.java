@@ -149,7 +149,7 @@ public class JClass {
 
     public Method getClinitMethod() {
 
-        Method method = getMethod("<init>", "()V");
+        Method method = getMethod("<clinit>", "()V");
         assert method.isStatic();
         return method;
     }

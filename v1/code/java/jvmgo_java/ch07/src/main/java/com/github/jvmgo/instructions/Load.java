@@ -13,7 +13,6 @@ public class Load extends Index8Instruction {
 
 
     private DateTypeEnum dateTypeEnum;
-    private  Integer index;
 
     public Load(DateTypeEnum dateTypeEnum, Integer localVarsIndex) {
         this.dateTypeEnum = dateTypeEnum;

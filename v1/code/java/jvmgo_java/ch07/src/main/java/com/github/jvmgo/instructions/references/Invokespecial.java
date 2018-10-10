@@ -67,7 +67,7 @@ public class Invokespecial extends Index16Instruction {
 
             //往上找
             Method  methodToBeInvoked = MethodLookupUtil.lookupMethodInClass(
-                    resolveClass,
+                    currentClass,//因为 currentClass 和 resolveClass之间可能有类实现了这个方法
                     methodRef.getName(),
                     methodRef.getDescriptor());
             if(methodToBeInvoked==null||methodToBeInvoked.isAbstract()){

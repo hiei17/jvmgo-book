@@ -1,5 +1,7 @@
 package com.github.jvmgo.rtda.heap;
 
+import java.util.Arrays;
+
 /**
  * @Author: panda
  * @Date: 2018/10/10 0010 21:42
@@ -28,5 +30,10 @@ public class ArrayObject extends JObject {
             throw new  ArrayIndexOutOfBoundsException();
         }
        slots[index]=data;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(slots);
     }
 }

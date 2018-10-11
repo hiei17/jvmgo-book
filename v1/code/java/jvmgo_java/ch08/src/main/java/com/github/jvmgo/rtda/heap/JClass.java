@@ -116,7 +116,7 @@ public class JClass {
         return "";
     }
 
-    public Object newObject() {
+    public JObject newObject() {
         return new JObject(this);
     }
 
@@ -164,4 +164,12 @@ public class JClass {
         return (ArrayClass) classLoader.loadClass(arrayClassName);
     }
 
+    public Field getField(String fieldName, String fieldType) {
+        for (Field field : fields) {
+            if (field.getName().equals(fieldName)||field.getDescriptor().equals(fieldType)) {
+                return field;
+            }
+        }
+        return null;
+    }
 }

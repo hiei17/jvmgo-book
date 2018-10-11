@@ -7,6 +7,8 @@ var internedStrings = map[string]*Object{}
 // todo
 // go string -> java.lang.String
 func JString(loader *ClassLoader, goStr string) *Object {
+
+	//本来有了
 	if internedStr, ok := internedStrings[goStr]; ok {
 		return internedStr
 	}

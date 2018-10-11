@@ -1,4 +1,4 @@
-package com.github.jvmgo.instructions.references;
+package com.github.jvmgo.instructions.references.invoke;
 
 import com.github.jvmgo.instructions.base.Index16Instruction;
 import com.github.jvmgo.instructions.base.MethodInvokeLogic;
@@ -7,6 +7,7 @@ import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.JClass;
 import com.github.jvmgo.rtda.heap.JObject;
 import com.github.jvmgo.rtda.heap.Method;
+import com.github.jvmgo.rtda.heap.StringPool;
 import com.github.jvmgo.rtda.heap.ref.MethodRef;
 import com.github.jvmgo.rtda.heap.util.ClassHierarchyUtil;
 import com.github.jvmgo.rtda.heap.util.MethodLookupUtil;
@@ -84,6 +85,10 @@ public class Invokevirtual extends Index16Instruction {
                 break;
             case "(D)V":
                 System.out.format("%f\n",stack.popDouble());
+                break;
+            case "(Ljava/lang/String;)V":
+              String  str = StringPool.getString(stack.popRef());
+                System.out.println(str);
                 break;
             default:
                 panic("println: " + descriptor);

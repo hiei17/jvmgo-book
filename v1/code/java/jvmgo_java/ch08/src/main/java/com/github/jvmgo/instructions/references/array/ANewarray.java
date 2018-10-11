@@ -12,14 +12,14 @@ import com.github.jvmgo.rtda.heap.ref.ClassRef;
  * @Author: panda
  * @Date: 2018/10/10 0010 21:00
  * 创建引用类型数组
+ * stack.push(new pop1[pop2])
  */
 public class ANewarray extends Index16Instruction {
 
 
     @Override
     public void execute(Frame frame) {
-        Object constant = frame.getMethod().getJClass().getRuntimeConstantPool().getConstant(index);
-        JClass componentClass = ((ClassRef) constant).resolveClass();
+        JClass componentClass = ((ClassRef) frame.getMethod().getJClass().getRuntimeConstantPool().getConstant(index)).resolveClass();
         OperandStack operandStack = frame.getOperandStack();
         int arrayLength = operandStack.popInt();
         if (arrayLength<0){

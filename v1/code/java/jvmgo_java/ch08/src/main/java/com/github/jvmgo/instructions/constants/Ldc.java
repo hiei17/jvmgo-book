@@ -3,6 +3,8 @@ package com.github.jvmgo.instructions.constants;
 import com.github.jvmgo.instructions.base.Index16Instruction;
 import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
+import com.github.jvmgo.rtda.heap.JClass;
+import com.github.jvmgo.rtda.heap.StringPool;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**
@@ -33,10 +35,14 @@ public class Ldc extends Index16Instruction {
     public void execute(Frame frame) {
 
         OperandStack operandStack = frame.getOperandStack();
-        Object constant = frame.getMethod().getJClass().getRuntimeConstantPool().getConstant(index);
+        JClass jClass = frame.getMethod().getJClass();
+        Object constant = jClass.getRuntimeConstantPool().getConstant(index);
         if (isPushW){
             operandStack.pushLorD(constant);
         }else {
+            if(constant instanceof String){
+                constant = StringPool.JString(jClass.classLoader,(String) constant);
+            }
             operandStack.push(constant);
         }
     }

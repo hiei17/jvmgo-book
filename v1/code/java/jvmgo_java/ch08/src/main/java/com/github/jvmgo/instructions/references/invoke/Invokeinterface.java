@@ -1,4 +1,4 @@
-package com.github.jvmgo.instructions.references;
+package com.github.jvmgo.instructions.references.invoke;
 
 import com.github.jvmgo.instructions.base.Instruction;
 import com.github.jvmgo.instructions.base.MethodInvokeLogic;
@@ -6,7 +6,7 @@ import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.heap.JClass;
 import com.github.jvmgo.rtda.heap.JObject;
 import com.github.jvmgo.rtda.heap.Method;
-import com.github.jvmgo.rtda.heap.ref.MethodRef;
+import com.github.jvmgo.rtda.heap.ref.InterfaceMethodRef;
 import com.github.jvmgo.rtda.heap.util.ClassHierarchyUtil;
 import com.github.jvmgo.rtda.heap.util.MethodLookupUtil;
 import com.github.jvmgo.util.BytecodeReader;
@@ -34,7 +34,7 @@ public class Invokeinterface implements Instruction {
     @Override
     public void execute(Frame frame) {
         JClass currentClass = frame.getMethod().getJClass();
-        MethodRef methodRef = (MethodRef) currentClass.getRuntimeConstantPool().getConstant(index);//指定的方法引用
+        InterfaceMethodRef methodRef = (InterfaceMethodRef) currentClass.getRuntimeConstantPool().getConstant(index);//指定的方法引用
         Method method = methodRef.resolveMethod();
       if(method.isStatic()||method.isPrivate()){
           throw new IncompatibleClassChangeError();

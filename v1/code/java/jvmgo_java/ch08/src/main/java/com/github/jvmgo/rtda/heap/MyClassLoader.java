@@ -98,6 +98,9 @@ public class MyClassLoader  {
             return;
         }
         Object constant = runtimeConstantPool.getConstant(constValueIndex);
+        if(constant instanceof String){
+            constant = StringPool.JString(this,(String) constant);
+        }
         staticVars[field.getSlotId()]=constant;
     }
 

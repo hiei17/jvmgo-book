@@ -23,7 +23,7 @@ public class ConstStringInfo implements CovertRuntimeConstant {
 	}
 
 	@Override
-	public Object getValue(RuntimeConstantPool runtimeConstantPool) {
+	public String getValue(RuntimeConstantPool runtimeConstantPool) {
 		return constPool.getUTF8(nameIndex);
 	}
 }

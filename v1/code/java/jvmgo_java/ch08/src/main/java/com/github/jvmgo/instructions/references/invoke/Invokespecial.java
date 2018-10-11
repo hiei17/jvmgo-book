@@ -1,4 +1,4 @@
-package com.github.jvmgo.instructions.references;
+package com.github.jvmgo.instructions.references.invoke;
 
 import com.github.jvmgo.instructions.base.Index16Instruction;
 import com.github.jvmgo.instructions.base.MethodInvokeLogic;

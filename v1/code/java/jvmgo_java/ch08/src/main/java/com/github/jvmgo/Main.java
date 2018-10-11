@@ -36,12 +36,13 @@ public class Main {
 
             Method mainMethod = mainClass.getMainMethod();
 
-            Interpret.execute(mainMethod,args.printInstructExecute);
+            Interpret.execute(mainMethod,args.printInstructExecute,args.getAppArgs());
 
 
         } catch (Exception e) {
             System.out.print(e.getMessage());
             System.out.println("Could not find or loadClass main class " + args.getMainClass());
+            e.printStackTrace();
         }
     }
 

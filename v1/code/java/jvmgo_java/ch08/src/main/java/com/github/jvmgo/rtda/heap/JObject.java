@@ -33,4 +33,14 @@ public class JObject {
 
         return jClass + " " + Arrays.toString(slots) ;
     }
+
+    public void setFieldValByNameAndType(String fieldName,String fieldType, Object object) {
+       Field field= jClass.getField(fieldName,fieldType);
+       slots[field.getSlotId()]=object;
+    }
+
+    public Object getFieldVar(String fieldName, String fieldType) {
+        Field field= jClass.getField(fieldName,fieldType);
+        return  slots[field.getSlotId()];
+    }
 }

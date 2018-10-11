@@ -33,6 +33,10 @@ import com.github.jvmgo.instructions.extended.Wide;
 import com.github.jvmgo.instructions.math.*;
 import com.github.jvmgo.instructions.references.*;
 import com.github.jvmgo.instructions.references.array.*;
+import com.github.jvmgo.instructions.references.invoke.Invokeinterface;
+import com.github.jvmgo.instructions.references.invoke.Invokespecial;
+import com.github.jvmgo.instructions.references.invoke.Invokestatic;
+import com.github.jvmgo.instructions.references.invoke.Invokevirtual;
 import com.github.jvmgo.instructions.stacks.Dup;
 import com.github.jvmgo.instructions.stacks.Swap;
 

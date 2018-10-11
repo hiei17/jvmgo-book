@@ -73,6 +73,8 @@ public abstract class ClassMember {
     abstract void copyAttributes( MemberInfo info) ;
 
 
-
-
+    @Override
+    public String toString() {
+        return jClass.getName()+name+descriptor;
+    }
 }

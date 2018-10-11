@@ -1,6 +1,5 @@
 package com.github.jvmgo.classFile.constantPool;
 
-import com.github.jvmgo.Main;
 import com.github.jvmgo.util.BytecodeReader;
 
 public interface ConstantInfo {
@@ -73,16 +72,21 @@ public interface ConstantInfo {
             //是Java SE 7才添加到class文件中的，目的是支持新增的invokedynamic指令
             case CONST_TAG_METHOD_HANDLE:
                 constantInfo = null;
+                reader.nextU1toInt();
+                reader.nextU2ToInt();
                 break;
             case CONST_TAG_METHOD_TYPE:
                 constantInfo = null;
+                reader.nextU2ToInt();
                 break;
             case CONST_TAG_INVOKE_DYNAMIC:
                 constantInfo = null;
+                reader.nextU2ToInt();
+                reader.nextU2ToInt();
                 break;
 
             default:
-                Main.panic("java.lang.ClassFormatError: constant poll tag!");
+             //   Main.panic("java.lang.ClassFormatError: constant poll tag!");
                 break;
         }
 

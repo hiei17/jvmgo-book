@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+//指定多个路径
 class CompositeEntry implements Entry {
 
     private final List<Entry> entries = new ArrayList<>();

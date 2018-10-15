@@ -17,6 +17,7 @@ public class MathOperator extends NoOperandsInstruction {
     @Override
     public void execute(Frame frame) {
 
+
         OperandStack operandStack = frame.getOperandStack();
         switch (typeEnum){
             case i:

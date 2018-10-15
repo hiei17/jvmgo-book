@@ -16,6 +16,9 @@ public class Return extends NoOperandsInstruction {
 
     @Override
     public void execute(Frame frame) {
+        if (frame.getThread().getPc()==28&&frame.getMethod().getName().equals("add")&&frame.getMethod().getClazz().getName().equals("java/util/ArrayList")){
+            System.out.print("panda");
+        }
         Thread thread = frame.getThread();
         Frame executedFrame = thread.popFrame();
         Frame waitReturnFrame= thread.currentFrame();

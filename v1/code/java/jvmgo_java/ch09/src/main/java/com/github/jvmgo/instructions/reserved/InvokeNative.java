@@ -3,6 +3,7 @@ package com.github.jvmgo.instructions.reserved;
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.nnative.NativeMethod;
 import com.github.jvmgo.nnative.java.lang.*;
+import com.github.jvmgo.nnative.sun.misc.VM;
 import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.heap.Method;
 
@@ -23,6 +24,7 @@ public class InvokeNative extends NoOperandsInstruction {
         DoubleNative.init();
         FloatNative.init();
         StringNative.init();
+        VM.init();
 
     }
 

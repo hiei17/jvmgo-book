@@ -22,6 +22,7 @@ public class Dup extends NoOperandsInstruction {
 
     @Override
     public void execute(Frame frame) {
+
         List dubObjects=new ArrayList();
         List moveObjects=new ArrayList();
         OperandStack operandStack = frame.getOperandStack();
@@ -33,8 +34,8 @@ public class Dup extends NoOperandsInstruction {
             moveObjects.add(operandStack.pop());
         }
         dubObjects.forEach(operandStack::push);
-        dubObjects.forEach(operandStack::push);
         moveObjects.forEach(operandStack::push);
+        dubObjects.forEach(operandStack::push);
 
     }
 }

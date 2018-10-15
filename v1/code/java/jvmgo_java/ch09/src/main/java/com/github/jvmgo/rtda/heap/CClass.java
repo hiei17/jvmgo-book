@@ -193,4 +193,9 @@ public class CClass {
     public boolean isPrimitive() {
       return   ClassNameHelper.primitiveTypes.containsKey(name);
     }
+
+    public Object getStaticFieldVal(String fieldName, String fieldType) {
+        Field field= getField(fieldName,fieldType);
+        return  staticVars[field.getSlotId()];
+    }
 }

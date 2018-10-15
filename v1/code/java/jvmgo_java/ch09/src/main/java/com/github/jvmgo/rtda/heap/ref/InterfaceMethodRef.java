@@ -27,17 +27,17 @@ public class InterfaceMethodRef {
         if (method == null) {
 
 
-            CClass fieldClass = classRef.resolveClass();
-            if (!fieldClass.isInterface()) {
+            CClass methodInClass = classRef.resolveClass();
+            if (!methodInClass.isInterface()) {
                 throw new IncompatibleClassChangeError();
 
             }
 
             //找接口,接口的接口 总之 找到定义这个方法的地方
-            Method method= MethodLookupUtil.lookupMethodInInterfaces(fieldClass, name, descriptor);
+            method= MethodLookupUtil.lookupMethodInInterfaces(methodInClass, name, descriptor);
 
             if (method == null) {
-                throw new NoSuchMethodError();
+                throw new NoSuchMethodError(name+" "+descriptor);
             }
 
             CClass userClass = classRef.getUserClass();

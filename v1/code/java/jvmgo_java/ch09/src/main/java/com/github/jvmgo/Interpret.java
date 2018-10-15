@@ -45,7 +45,11 @@ public class Interpret {
         try {
             while (true) {
                 frame = thread.currentFrame();
+
                 int nextPC = frame.getNextPC();//frame如果是新建的会从0开始
+                if (frame.getMethod().getName().equals("main")&&nextPC==18){
+                    System.out.print("panda");
+                }
                 thread.setPc(nextPC);//此指令开始执行的pc
 
                 reader.reset(frame.getMethod().getCode(), nextPC);
@@ -61,8 +65,8 @@ public class Interpret {
                     Method method =frame.getMethod();
                     String className = method.getClazz().getName();
                     String methodName = method.getName();
-                    int pc = frame.getThread().getPc();
-                    System.out.println(String.format("%s.%s() %d ",className, methodName, pc)+inst.getClass().getSimpleName());
+
+                    System.out.println(String.format("%s.%s() %d ",className, methodName, nextPC)+inst.getClass().getSimpleName());
                 }
 
                 if (thread.isStackEmpty()) {

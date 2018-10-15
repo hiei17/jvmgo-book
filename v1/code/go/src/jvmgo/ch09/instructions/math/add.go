@@ -29,6 +29,9 @@ func (self *FADD) Execute(frame *rtda.Frame) {
 type IADD struct{ base.NoOperandsInstruction }
 
 func (self *IADD) Execute(frame *rtda.Frame) {
+	if frame.Method().Class().Name()=="java/util/ArrayList"&&frame.Method().Name()=="add"&&frame.Thread().PC()==21{
+		print("panda")
+	}
 	stack := frame.OperandStack()
 	v2 := stack.PopInt()
 	v1 := stack.PopInt()

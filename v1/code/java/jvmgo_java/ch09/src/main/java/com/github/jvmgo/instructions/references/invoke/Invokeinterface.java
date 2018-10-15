@@ -27,7 +27,8 @@ public class Invokeinterface implements Instruction {
         述符计算出来的，它的存在仅仅是因为历史原因。*/
       int slotCount=  reader.nextU1toInt();
         //第4字节是留给 Oracle的某些Java虚拟机实现用的，它的值必须是0。
-       assert 1== reader.nextU1toInt();
+        int i = reader.nextU1toInt();
+
 
     }
 
@@ -47,7 +48,7 @@ public class Invokeinterface implements Instruction {
         CClass thisObjectClass = thisObjectRef.getClazz();
         CClass interfaceClass = methodRef.getClassRef().resolveClass();
 
-        if(ClassHierarchyUtil.isImplements(thisObjectClass,interfaceClass)){
+        if(!ClassHierarchyUtil.isImplements(thisObjectClass,interfaceClass)){
             throw new IncompatibleClassChangeError();
         }
 

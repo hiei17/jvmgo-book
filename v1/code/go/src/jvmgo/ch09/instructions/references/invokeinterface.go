@@ -13,8 +13,10 @@ type INVOKE_INTERFACE struct {
 
 func (self *INVOKE_INTERFACE) FetchOperands(reader *base.BytecodeReader) {
 	self.index = uint(reader.ReadUint16())
-	reader.ReadUint8() // count
-	reader.ReadUint8() // must be 0
+	u := reader.ReadUint8()         // count
+	readUint8 := reader.ReadUint8() // must be 0
+	print(u)
+	print(readUint8)
 }
 
 func (self *INVOKE_INTERFACE) Execute(frame *rtda.Frame) {

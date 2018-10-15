@@ -11,16 +11,24 @@ public class MethodLookupUtil {
 
 
     public static Method lookupMethodInInterfaces(CClass clazz, String name, String descriptor) {
+
+
+
+        Method amethod = clazz.getMethod(name, descriptor);
+        if (amethod!=null){
+            return amethod;
+        }
+
         //遍历这些接口找
         for (CClass anInterface : clazz.interfaces) {
             Method method = anInterface.getMethod(name, descriptor);
             if (method!=null){
-                return null;
+                return method;
             }
             //接口的接口里面找
             method = lookupMethodInInterfaces(anInterface, name, descriptor);
             if (method!=null){
-                return null;
+                return method;
             }
         }
         return null;

@@ -14,7 +14,7 @@ public class OObject {
 
 
     protected CClass clazz;
-    protected Object[] slots;
+    public Object[] slots;
 
     //记录Object结构体实例的额外信息
     //本章，只用它来记录[类对象]对应的[Class结构体]指针 不是类对象 就没有东西

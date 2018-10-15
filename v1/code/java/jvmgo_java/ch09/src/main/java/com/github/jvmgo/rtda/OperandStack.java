@@ -69,10 +69,14 @@ public class OperandStack {
    @Override
     public String toString() {
         String s="[";
-        for (int i = 0; i <nextIndex; i++) {
-            s =s+objects[i]+",  ";
-        }
-        return s+"]";
+       try {
+           for (int i = 0; i <nextIndex; i++) {
+               s =s+objects[i]+",  ";
+           }
+       } catch (Exception e) {
+        //   e.printStackTrace();
+       }
+       return s+"]";
     }
 
     public Object peekFromTop(int index) {

@@ -17,6 +17,10 @@ import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
 public class GetStatic extends Index16Instruction {
     @Override
     public void execute(Frame frame) {
+        if (frame.getThread().getPc()==19&&frame.getMethod().getName().equals("main")){
+            System.out.print("panda");
+        }
+
         //拿到运行时常量池
         RuntimeConstantPool runtimeConstantPool = frame.getMethod().getClazz().getRuntimeConstantPool();
         Field field= ((FieldRef) runtimeConstantPool.getConstant(index)).resolveField();

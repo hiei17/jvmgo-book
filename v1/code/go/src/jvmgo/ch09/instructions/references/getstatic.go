@@ -8,6 +8,9 @@ import "jvmgo/ch09/rtda/heap"
 type GET_STATIC struct{ base.Index16Instruction }
 
 func (self *GET_STATIC) Execute(frame *rtda.Frame) {
+	if frame.Method().Class().Name()=="jvmgo/book/ch09/BoxTest"&&frame.Method().Name()=="main"&&frame.Thread().PC()==19{
+		print("panda")
+	}
 	cp := frame.Method().Class().ConstantPool()
 	fieldRef := cp.GetConstant(self.Index).(*heap.FieldRef)
 	field := fieldRef.ResolvedField()

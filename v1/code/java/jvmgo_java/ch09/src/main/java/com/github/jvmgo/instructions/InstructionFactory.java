@@ -39,6 +39,7 @@ import com.github.jvmgo.instructions.references.invoke.Invokestatic;
 import com.github.jvmgo.instructions.references.invoke.Invokevirtual;
 import com.github.jvmgo.instructions.reserved.InvokeNative;
 import com.github.jvmgo.instructions.stacks.Dup;
+import com.github.jvmgo.instructions.stacks.Pop;
 import com.github.jvmgo.instructions.stacks.Swap;
 
 /**
@@ -125,8 +126,8 @@ public class InstructionFactory {
     private static Store astore_3 = new Store(DateTypeEnum.a, 3);
     private static Instruction Xastore =new XAstore();
 
-    private static Instruction pop = new Dup(0, 1);
-    private static Instruction pop2 = new Dup(0, 2);
+    private static Instruction pop = new Pop( 1);
+    private static Instruction pop2 = new Pop( 2);
 
     private static Instruction dup = new Dup(1, 0);
     private static Instruction dup_x1 = new Dup(1, 1);

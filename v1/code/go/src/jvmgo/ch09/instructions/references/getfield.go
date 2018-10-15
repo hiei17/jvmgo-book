@@ -8,6 +8,10 @@ import "jvmgo/ch09/rtda/heap"
 type GET_FIELD struct{ base.Index16Instruction }
 
 func (self *GET_FIELD) Execute(frame *rtda.Frame) {
+
+	if frame.Method().Class().Name()=="java/util/ArrayList"&&frame.Method().Name()=="add"&&frame.Thread().PC()==16{
+		print("panda")
+	}
 	cp := frame.Method().Class().ConstantPool()
 	fieldRef := cp.GetConstant(self.Index).(*heap.FieldRef)
 	field := fieldRef.ResolvedField()

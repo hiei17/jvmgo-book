@@ -43,7 +43,7 @@ public class JvmsExample {
     }
 
     void tryItOut() {
-        //throw new TestExc();
+        throw new TestExc();
     }
 
     void handleExc(RuntimeException exc) {

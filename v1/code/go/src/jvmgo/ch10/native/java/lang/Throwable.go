@@ -46,6 +46,8 @@ func createStackTraceElements(tObj *heap.Object, thread *rtda.Thread) []*StackTr
 func distanceToObject(class *heap.Class) int {
 	distance := 0
 	for c := class.SuperClass(); c != nil; c = c.SuperClass() {
+		print(c.Name())
+		print("\n")
 		distance++
 	}
 	return distance

@@ -35,6 +35,7 @@ func readAttribute(reader *ClassReader, cp ConstantPool) AttributeInfo {
 }
 
 func newAttributeInfo(attrName string, attrLen uint32, cp ConstantPool) AttributeInfo {
+
 	switch attrName {
 	// case "AnnotationDefault":
 	case "BootstrapMethods":
@@ -73,6 +74,7 @@ func newAttributeInfo(attrName string, attrLen uint32, cp ConstantPool) Attribut
 	case "Synthetic":
 		return _attrSynthetic
 	default:
+
 		return &UnparsedAttribute{attrName, attrLen, nil}
 	}
 }

@@ -9,7 +9,7 @@ public class ParseIntTest {
     private static void foo(String[] args) {
         try {
             bar(args);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {//不属于
             System.out.println(e.getMessage());
         }
     }

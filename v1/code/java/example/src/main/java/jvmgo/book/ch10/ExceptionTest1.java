@@ -9,6 +9,8 @@ public class ExceptionTest1 {
         test(3);
     }
 
+
+
     private static void test(int x) {
         try {
             if (x == 0) {

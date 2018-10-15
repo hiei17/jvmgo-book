@@ -35,7 +35,7 @@ public class Putfield extends Index16Instruction {
             throw new IncompatibleClassChangeError();
         }
         if( field.isFinal() ){
-            if (currentClass != fieldClass || !"<clinit>".equals(method.getName())) {
+            if (currentClass != fieldClass || !"<init>".equals(method.getName())) {
                 throw new IllegalAccessError();
             }
         }

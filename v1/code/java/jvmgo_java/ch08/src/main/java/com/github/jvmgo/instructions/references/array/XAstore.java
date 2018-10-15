@@ -4,7 +4,6 @@ import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.ArrayObject;
-import com.github.jvmgo.rtda.heap.JObject;
 
 /**
  * @Author: panda
@@ -23,6 +22,7 @@ public class XAstore extends NoOperandsInstruction {
         if(array==null){
             throw new NullPointerException();
         }
+
         array.set(index,data);
     }
 }

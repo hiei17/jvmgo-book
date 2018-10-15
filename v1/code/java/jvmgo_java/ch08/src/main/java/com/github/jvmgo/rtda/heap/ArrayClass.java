@@ -34,14 +34,14 @@ public class ArrayClass extends JClass {
     public ArrayObject newArray(int count) {
 
         switch (name) {
-            case "[Z": return new ArrayObject(this, new Integer[count]);
-            case "[B": return new ArrayObject(this, new Integer[count]);
+           /* case "[Z": return new ArrayObject(this, new Integer[count]);
+            case "[B": return new ArrayObject(this, new Boolean[count]);
             case "[C": return new ArrayObject(this, new Integer[count]);
             case "[S": return new ArrayObject(this, new Integer[count]);
             case "[I": return new ArrayObject(this, new Integer[count]);
             case "[J": return new ArrayObject(this, new Integer[count]);
             case "[F": return new ArrayObject(this, new Float[count]);
-            case "[D": return new ArrayObject(this, new Double[count]);
+            case "[D": return new ArrayObject(this, new Double[count]);*/
             default: return new ArrayObject(this, new Object[count]);
         }
     }

@@ -88,7 +88,7 @@ public class Invokevirtual extends Index16Instruction {
                 break;
             case "(Ljava/lang/String;)V":
               String  str = StringPool.getString(stack.popRef());
-                System.out.println(str);
+                System.err.println(str);
                 break;
             default:
                 panic("println: " + descriptor);

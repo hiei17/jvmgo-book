@@ -5,7 +5,7 @@ import com.github.jvmgo.instructions.base.Index16Instruction;
 import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.heap.ref.ClassRef;
 import com.github.jvmgo.rtda.heap.CClass;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 
 /**
  * @Author: panda

@@ -40,7 +40,7 @@ public interface AttributeInfo {
             //method属性
             case "Code"://方法体
                 return new CodeAttribute(cp);
-            //field属性
+            //field属性 常量(static field 会有)
             case "ConstantValue"://常量表达式的值  存常量池索引
                 return new ConstantValueAttribute();
 

@@ -11,10 +11,13 @@ import lombok.Getter;
  */
 @Getter
 public class InterfaceMethodRef {
+
+    //符号引用
     private ClassRef classRef;
     private String name;
     private String descriptor;
 
+    //虚拟机对第一次解析结果缓存
     private Method method;
 
     public InterfaceMethodRef(CClass useClass, String className, String name, String type) {
@@ -23,6 +26,8 @@ public class InterfaceMethodRef {
         this.descriptor = type;
     }
 
+    //mark 连接3 解析
+    //符号引用 转为直接引用
     public Method resolveMethod() {
         if (method == null) {
 

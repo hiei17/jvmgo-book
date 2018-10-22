@@ -1,7 +1,6 @@
 package com.github.jvmgo.rtda.heap;
 
 import com.github.jvmgo.classFile.constantPool.ConstantInfo;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
 
 /**
  * @Author: panda

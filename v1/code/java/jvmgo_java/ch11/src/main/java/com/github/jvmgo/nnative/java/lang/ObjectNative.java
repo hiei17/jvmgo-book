@@ -38,6 +38,8 @@ public class ObjectNative {
         OObject thisObject = frame.getLocalVars().getRef(0);
         CClass thisClazz = thisObject.getClazz();
         CClass cloneClass = thisClazz.classLoader.loadClass("java/lang/Cloneable");
+
+        //有实现Cloneable接口才让克隆
         if(!ClassHierarchyUtil.isImplements(thisClazz,cloneClass)){
             throw new RuntimeException("CloneNotSupportedException");
         }

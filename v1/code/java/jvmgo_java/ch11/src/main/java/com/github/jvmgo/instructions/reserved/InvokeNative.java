@@ -2,6 +2,7 @@ package com.github.jvmgo.instructions.reserved;
 
 import com.github.jvmgo.instructions.base.NoOperandsInstruction;
 import com.github.jvmgo.nnative.NativeMethod;
+import com.github.jvmgo.nnative.io.FileOutputStream;
 import com.github.jvmgo.nnative.java.lang.*;
 import com.github.jvmgo.nnative.java.lang.Throwable;
 import com.github.jvmgo.nnative.sun.misc.VM;
@@ -27,7 +28,7 @@ public class InvokeNative extends NoOperandsInstruction {
         StringNative.init();
         VM.init();
         Throwable.init();
-
+        FileOutputStream.init();
     }
 
     @Override

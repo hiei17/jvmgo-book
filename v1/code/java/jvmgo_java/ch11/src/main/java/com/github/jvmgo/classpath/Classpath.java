@@ -17,19 +17,33 @@ public class Classpath {
         parseUserClasspath(cpOption);
     }
 
+    //mark jvm规范推荐 双亲加载 就是 先让父加载器去加载 这些走完了 再自定义的类记载器
+
+    /**
+     * public class Object{
+     * //会报错 找不到main方法
+     *  public static void main(String[] args) {
+     *      Object obj = new 0bject();
+     *      System.out.println("Hello");
+     *  }
+     * }
+     * @param jreOption
+     */
     private void parseBootAndExtClasspath(String jreOption) {
         String jreDir = getJreDir(jreOption);
 
-        // jre/lib/*
+        //D:\Java\jdk1.8.0_102\jre\lib
+        //mark jre/lib/*
         String jreLibPath = Paths.get(jreDir, "lib").toString() + File.separator + "*";
         bootClasspath = new WildcardEntry(jreLibPath);
 
-        // jre/lib/ext/*
+        //mark jre/lib/ext/*
         String jreExtPath = Paths.get(jreDir, "lib", "ext").toString() + File.separator + "*";
         extClasspath = new WildcardEntry(jreExtPath);
     }
 
     private static String getJreDir(String jreOption) {
+
         if (jreOption != null && Files.exists(Paths.get(jreOption))) {
             return jreOption;
         }

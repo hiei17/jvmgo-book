@@ -25,6 +25,7 @@ public class ArrayClass extends CClass {
         accessFlags=ACC_PUBLIC;
         initStarted=true;
         superClass=myClassLoader.loadClass("java/lang/Object");
+
         interfaces=new CClass[2];
         interfaces[0]=myClassLoader.loadClass("java/lang/Cloneable");
         interfaces[1]=myClassLoader.loadClass("java/io/Serializable");

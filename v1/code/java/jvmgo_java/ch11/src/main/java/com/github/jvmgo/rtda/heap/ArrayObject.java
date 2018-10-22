@@ -35,8 +35,6 @@ public class ArrayObject extends OObject {
 
     public void set(int index, Object data) {
 
-
-
         if(index>length-1){
             throw new  ArrayIndexOutOfBoundsException();
         }

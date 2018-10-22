@@ -1,7 +1,7 @@
 package com.github.jvmgo.classFile.constantPool;
 
 import com.github.jvmgo.rtda.heap.CovertRuntimeConstant;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 import com.github.jvmgo.util.BytecodeReader;
 
 /**

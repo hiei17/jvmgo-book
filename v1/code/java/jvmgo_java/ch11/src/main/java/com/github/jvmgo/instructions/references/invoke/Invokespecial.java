@@ -52,9 +52,9 @@ public class Invokespecial extends Index16Instruction {
                 ClassHierarchyUtil.isSubClassOf(currentClass,methodClass)&&//当前类是方法的类的子类
         !methodClass.getPackageName().equals(currentClass.getPackageName()) )//当前类和方法的类不同包
         {
-            CClass objectRefclazz = thisObjectRef.getClazz();//实例的类
-             if(!objectRefclazz.equals(currentClass) &&
-                 !  ClassHierarchyUtil.isSubClassOf(objectRefclazz,currentClass) ){//如果不是当前类也不是当前类的子类
+            CClass objectRefClazz = thisObjectRef.getClazz();//实例的类
+             if(!objectRefClazz.equals(currentClass) &&
+                 !  ClassHierarchyUtil.isSubClassOf(objectRefClazz,currentClass) ){//如果不是当前类也不是当前类的子类
 
                     //子类在自己里面 或者在和父类同包时 才能调用父类方法protected
                     throw new IllegalAccessError();

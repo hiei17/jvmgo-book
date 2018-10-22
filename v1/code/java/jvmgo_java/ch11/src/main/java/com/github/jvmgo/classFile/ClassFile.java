@@ -1,6 +1,5 @@
 package com.github.jvmgo.classFile;
 
-import com.github.jvmgo.Main;
 import com.github.jvmgo.classFile.attributeInfo.AttributeInfo;
 import com.github.jvmgo.classFile.attributeInfo.SourceFileAttribute;
 import com.github.jvmgo.classFile.constantPool.ConstantPool;
@@ -46,7 +45,7 @@ public class ClassFile {
 	private void readAndCheckMagic() {
 		String magic = this.reader.nextU4ToHexString();
 		if(!"cafebabe".equals(magic)) {
-			Main.panic("java.lang.ClassFormatError: magic!");
+			System.err.println("java.lang.ClassFormatError: magic!");
 		}
 	}
 	
@@ -57,7 +56,7 @@ public class ClassFile {
 		if(this.majorVersion >=46 && this.majorVersion <=52 && this.minorVersion ==0) {
 			return;
 		}
-		Main.panic("java.lang.UnsupportedClassVersionError!");
+		System.err.println("java.lang.UnsupportedClassVersionError!");
 	}
 	
 	

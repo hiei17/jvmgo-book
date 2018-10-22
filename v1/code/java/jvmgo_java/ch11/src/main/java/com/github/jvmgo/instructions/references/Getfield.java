@@ -5,7 +5,7 @@ import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 import com.github.jvmgo.rtda.heap.ref.FieldRef;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 
 /**
  field=frame.method.class.runtimeConstantsPool[指令操作数index];

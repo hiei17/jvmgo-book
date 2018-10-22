@@ -2,7 +2,7 @@ package com.github.jvmgo.classFile.constantPool;
 
 import com.github.jvmgo.rtda.heap.*;
 import com.github.jvmgo.rtda.heap.ref.ClassRef;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 import com.github.jvmgo.util.BytecodeReader;
 import lombok.Getter;
 

@@ -2,7 +2,6 @@ package com.github.jvmgo.rtda.heap;
 
 import com.github.jvmgo.classFile.attributeInfo.CodeAttribute;
 import com.github.jvmgo.rtda.heap.ref.ClassRef;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
 import com.github.jvmgo.rtda.heap.util.ClassHierarchyUtil;
 
 /**

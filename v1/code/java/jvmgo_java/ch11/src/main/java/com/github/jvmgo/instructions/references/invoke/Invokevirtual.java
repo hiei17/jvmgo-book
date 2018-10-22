@@ -3,16 +3,14 @@ package com.github.jvmgo.instructions.references.invoke;
 import com.github.jvmgo.instructions.base.Index16Instruction;
 import com.github.jvmgo.instructions.base.MethodInvokeLogic;
 import com.github.jvmgo.rtda.Frame;
-import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.CClass;
-import com.github.jvmgo.rtda.heap.OObject;
 import com.github.jvmgo.rtda.heap.Method;
-import com.github.jvmgo.rtda.heap.StringPool;
+import com.github.jvmgo.rtda.heap.OObject;
 import com.github.jvmgo.rtda.heap.ref.MethodRef;
 import com.github.jvmgo.rtda.heap.util.ClassHierarchyUtil;
 import com.github.jvmgo.rtda.heap.util.MethodLookupUtil;
 
-import static com.github.jvmgo.Main.panic;
+
 
 /**
  * @Author: panda
@@ -33,10 +31,12 @@ public class Invokevirtual extends Index16Instruction {
 
         OObject thisObjectRef = (OObject) frame.getOperandStack().peekFromTop(method.getArgSlotCount() - 1);
         if( thisObjectRef == null ){
-            if ((methodRef.getName().indexOf("print")>-1) ){
+
+            //hack
+           /* if ((methodRef.getName().indexOf("print")>-1) ){
                 println(frame.getOperandStack(), methodRef.getDescriptor());
                 return;
-            }
+            }*/
             throw new NullPointerException();
         }
         CClass methodClass = method.getClazz();
@@ -67,33 +67,5 @@ public class Invokevirtual extends Index16Instruction {
         MethodInvokeLogic.invoke(frame, methodToBeInvoked);
     }
 
-    private void  println(OperandStack stack,String descriptor ) {
-        switch (descriptor) {
-            case "(Z)V":
-                System.err.format("%b\n",stack.popInt()!=0);
-                break;
-            case "(C)V":
-                System.err.format("%c\n",stack.popInt());
-                break;
-            case "(I)V": case "(B)V":case "(S)V":
-                System.err.format("%d\n",stack.popInt());
-                break;
-            case "(F)V":
-                System.err.format("%f\n",stack.popFloat());
-                break;
-            case "(J)V":
-                System.err.format("%d\n",stack.popLong());
-                break;
-            case "(D)V":
-                System.err.format("%f\n",stack.popDouble());
-                break;
-            case "(Ljava/lang/String;)V":
-              String  str = StringPool.getString(stack.popRef());
-                System.err.println(str);
-                break;
-            default:
-                panic("println: " + descriptor);
-        }
-        stack.pop();
-    }
+
 }

@@ -10,10 +10,12 @@ import lombok.Getter;
  */
 public class ClassRef {
 
+    //符号引用
     @Getter
     private CClass userClass;
     private String className;
 
+    //虚拟机对第一次解析结果缓存
     private CClass clazz;
 
     public ClassRef(CClass clazz, String className) {
@@ -21,6 +23,8 @@ public class ClassRef {
         this.className=className;
     }
 
+    //mark 连接3 解析
+    //符号引用 转为直接引用
     public CClass resolveClass()  {
 
         if(clazz==null){

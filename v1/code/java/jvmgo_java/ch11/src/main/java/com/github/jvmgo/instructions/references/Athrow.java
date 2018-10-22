@@ -73,7 +73,7 @@ public class Athrow extends NoOperandsInstruction {
     private void handleUncaughtException( Thread thread,OObject ex ) {
 
         //Java虚拟机栈清空  Java虚拟机栈已经空了，所以解释器也就终止执行了
-        thread.clearnStack();
+        thread.clearStack();
 
         //得异常对象的这个字段值 转成go字符串
         OObject  jMsg = (OObject)ex.getFieldVar("detailMessage", "Ljava/lang/String;");

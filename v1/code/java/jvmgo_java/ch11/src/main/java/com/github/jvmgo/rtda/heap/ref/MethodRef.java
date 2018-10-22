@@ -11,10 +11,14 @@ import lombok.Getter;
  */
 @Getter
 public class MethodRef {
+
+    //符号引用
     private ClassRef classRef;//引用时指定的类
     private String name;
     private String descriptor;
 
+
+    //虚拟机对第一次解析结果缓存
     private Method method;//方法缓存 调用的不一定是它
 
     public MethodRef(CClass useClass, String className, String name, String type) {
@@ -23,6 +27,8 @@ public class MethodRef {
         this.descriptor = type;
     }
 
+    //mark 连接3 解析
+    //符号引用 转为直接引用
     public Method resolveMethod() {
         if (method == null) {
 
@@ -53,12 +59,12 @@ public class MethodRef {
     private  Method lookupMethod(CClass clazz, String name, String descriptor) {
         //沿着继承链往上找
         Method method = MethodLookupUtil.lookupMethodInClass(clazz, name, descriptor);
-
-        if(method == null) {
-            //接口里面找
-            method =MethodLookupUtil.lookupMethodInInterfaces(clazz, name, descriptor);
+        if(method!=null){
+            return method;
         }
 
+        //接口里面找
+        method =MethodLookupUtil.lookupMethodInInterfaces(clazz, name, descriptor);
         return method;
     }
 

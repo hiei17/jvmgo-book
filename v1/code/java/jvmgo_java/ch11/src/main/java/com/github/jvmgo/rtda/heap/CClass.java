@@ -2,7 +2,6 @@ package com.github.jvmgo.rtda.heap;
 
 import com.github.jvmgo.classFile.ClassFile;
 import com.github.jvmgo.classFile.attributeInfo.SourceFileAttribute;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
 import com.github.jvmgo.rtda.heap.util.ClassNameHelper;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -29,6 +28,11 @@ public class CClass {
     private Field[] fields;
     private Method[] methods;
 
+    //我用到的地方
+    /**
+     * 1.ldc 从常量池加载 入栈的是 class对象
+     * 2.xxx.class xxx.getClass 得对象的class对象
+     */
     public OObject jClass;//对应class对象
     private String sourceFile;
 
@@ -151,6 +155,7 @@ public class CClass {
             return false;
         }
         CClass clazz = (CClass) o;
+        //必须类名和 类加载器 都是一个
         return Objects.equals(name, clazz.name) &&
                 Objects.equals(classLoader, clazz.classLoader);
     }
@@ -173,7 +178,7 @@ public class CClass {
         return method;
     }
 
-
+    //得到以本类为元素组成的数组类
     public ArrayClass arrayClass() {
        String arrayClassName= ClassNameHelper.getArrayClassName(name);
 
@@ -208,13 +213,9 @@ public class CClass {
       return   ClassNameHelper.primitiveTypes.containsKey(name);
     }
 
-    public Object getStaticFieldVal(String fieldName, String fieldType) {
+
+    public void setStaticFieldValByNameAndType(String fieldName, String fieldType, Object object) {
         Field field= getField(fieldName,fieldType);
-        return  staticVars[field.getSlotId()];
+        staticVars[field.getSlotId()]=object;
     }
-
-
-
-
-
 }

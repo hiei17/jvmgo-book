@@ -9,13 +9,17 @@ import lombok.Data;
  */
 @Data
 public class Frame {
+
+
+
+    //这2者大小由编译器就计算好了, classFile里面的method表里面有写
     //局部变量表
   private   LocalVars localVars    ;
 
   //操作数栈
   private OperandStack operandStack ;
-  private Method method ;
 
+  private Method method ;
 
   private Thread thread;//本栈帧所属线程
 
@@ -31,6 +35,16 @@ public class Frame {
         this.thread=thread;
     }
 
+    public Frame(Thread thread, OperandStack ops) {
+        this.method=Method.newShimReturnMethod();
+        this.operandStack =ops;
+        this.thread=thread;
+    }
+
+    public static Frame newShimFrame(Thread thread, OperandStack ops) {
+        return new Frame(thread,ops);
+    }
+
     public void revertNextPC() {
         nextPC=thread.getPc();
     }
@@ -40,4 +54,6 @@ public class Frame {
         return method.getName();
 
     }
+
+
 }

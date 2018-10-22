@@ -4,43 +4,13 @@ import com.github.jvmgo.instructions.InstructionFactory;
 import com.github.jvmgo.instructions.base.Instruction;
 import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.Thread;
-import com.github.jvmgo.rtda.heap.*;
+import com.github.jvmgo.rtda.heap.Method;
 import com.github.jvmgo.util.BytecodeReader;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Interpret {
 
-    public static void execute(Method method, boolean printInstructExecute, List<String> appArgs) {
 
-
-        Thread thread = new Thread();
-        thread.pushFrame(method);
-        Frame frame = thread.currentFrame();
-        frame.getLocalVars().setRef(0, createStringArray(method.getClazz().classLoader,appArgs));
-        loop(thread, printInstructExecute);
-    }
-
-    private static ArrayObject createStringArray(MyClassLoader classLoader, List<String> appArgs) {
-
-        if (appArgs==null){
-            appArgs=new ArrayList<>();
-        }
-
-        CClass stringClass = classLoader.loadClass("java/lang/String");
-        ArrayClass arrayClass = stringClass.arrayClass();//String[]的class
-        int size = appArgs.size();
-        ArrayObject arrayObject = arrayClass.newArray(size);
-        for (int i = 0; i < size; i++) {
-            arrayObject.set(i,StringPool.JString(classLoader,appArgs.get(i)));
-
-        }
-        return arrayObject;
-
-
-    }
 
     //不变
     private static void loop(Thread thread, boolean printInstructExecute) {
@@ -89,5 +59,7 @@ public class Interpret {
     }
 
 
-
+    public static void execute(Thread mainThread, boolean printInstructExecute) {
+        loop(mainThread, printInstructExecute);
+    }
 }

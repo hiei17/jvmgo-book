@@ -5,7 +5,7 @@ import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 import com.github.jvmgo.rtda.heap.ref.FieldRef;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 
 /**
 找到field 弹出值val 弹出对象引用  set对象 这个field 为val

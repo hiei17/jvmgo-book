@@ -13,6 +13,14 @@ import com.github.jvmgo.rtda.heap.Method;
  *
  */
 public class MethodInvokeLogic {
+
+    /**
+     * 方法调用公共逻辑 这里的方法是确定的了
+     *
+     * 用方法产生新帧入线程里面的虚拟机栈 传参是 老帧弹出入新栈局部变量表
+     * @param invokerFrame 要调用方法的帧
+     * @param method 被调用的方法
+     */
     public static void invoke(Frame invokerFrame, Method method) {
 
         //方法产生一新frame 入线程的虚拟机栈

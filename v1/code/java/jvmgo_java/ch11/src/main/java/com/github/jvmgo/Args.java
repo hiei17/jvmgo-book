@@ -3,6 +3,7 @@ package com.github.jvmgo;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Args {
@@ -42,7 +43,7 @@ public class Args {
     List<String> getAppArgs() {
         return mainClassAndArgs != null && mainClassAndArgs.size() >1
                 ? mainClassAndArgs.subList(1, mainClassAndArgs.size())
-                : null;
+                : new ArrayList<>();
     }
 
     static Args parse(String[] argv) {

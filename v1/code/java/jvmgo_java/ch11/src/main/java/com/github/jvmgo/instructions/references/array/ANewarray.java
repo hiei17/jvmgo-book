@@ -19,13 +19,18 @@ public class ANewarray extends Index16Instruction {
 
     @Override
     public void execute(Frame frame) {
+
         CClass componentClass = ((ClassRef) frame.getMethod().getClazz().getRuntimeConstantPool().getConstant(index)).resolveClass();
+
         OperandStack operandStack = frame.getOperandStack();
         int arrayLength = operandStack.popInt();
         if (arrayLength<0){
             throw new NegativeArraySizeException();
         }
+
+        //mark 注意 用componentClass 生成以它为元素的数组 componentClass不会触发类初始化
         ArrayClass arrClass = componentClass.arrayClass();
+
         ArrayObject arr = arrClass.newArray(arrayLength);
         operandStack.push(arr);
     }

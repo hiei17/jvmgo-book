@@ -11,10 +11,13 @@ import lombok.Data;
 @Data
 public class Thread {
 
+    //如果当前是本地方法 这个值没规定
+    //当前method执行的字节码在方法的code[]里面排第几个
+    private int pc;// 指令复位(先去类初始化以后要回来再执行本方法) 和 跳转(跳转从这个跳转指令之前的位置开始算距离)
 
-    private int pc;//这里每次读下一个指令前存一份pc用于方法复位 和 跳转
+    //这个实现里面 本地方法栈 和 虚拟机栈 用同一个
     //Java虚拟机栈 由栈帧（Stack Frame，简称帧）构成，一方法一帧
-    private JVMStack jvmStack=new JVMStack();
+    private JVMStack jvmStack=new JVMStack();//平时我们所说的 栈内存
 
 
 
@@ -27,8 +30,13 @@ public class Thread {
         return jvmStack.top();
     }
 
-    public void pushFrame(Method method) {
+    public Frame pushFrame(Method method) {
         Frame frame = new Frame(method,this);
+        jvmStack.push(frame);
+        return frame;
+    }
+
+    public void pushFrame(Frame frame) {
         jvmStack.push(frame);
     }
 
@@ -37,7 +45,7 @@ public class Thread {
         return jvmStack.isEmpty();
     }
 
-    public void clearnStack() {
+    public void clearStack() {
         jvmStack.clearn();
     }
 

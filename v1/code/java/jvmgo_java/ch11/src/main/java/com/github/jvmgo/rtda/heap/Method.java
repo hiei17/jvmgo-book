@@ -21,26 +21,31 @@ public class Method extends ClassMember {
 
     private int maxStack;
     private int maxLocals;
-    private byte[] code;
 
+    //由方法描述计算得到
     private int argSlotCount;
 
+    //都来自方法Code 属性的子属性
+    private byte[] code;
     private ExceptionHandler[] exceptionTable;
     private LineNumberTableAttribute lineNumberTable;
 
     private Method(MemberInfo methodInfo, CClass ownClass) {
         super(methodInfo, ownClass);
+
         MethodDescriptor methodDescriptor = (new MethodDescriptorParser(this.descriptor)).parse();
         calcArgSlotCount( methodDescriptor.getParameterTypes());
+
         if(this.isNative()){
             nativeMethodInjectCodeAttribute(methodDescriptor.getReturnType());
         }
     }
 
-   /* 我们用__Java虚拟机栈__执行本地方法，
-    Java虚拟机规范预留了两条指令，操作码分别是0xFE和0xFF。
 
-    下面将使用0xFE指令来达到这个目的*/
+    /* 我们用__Java虚拟机栈__执行本地方法，
+     Java虚拟机规范预留了两条指令，操作码分别是0xFE和0xFF。
+
+     下面将使用0xFE指令来达到这个目的*/
     private void nativeMethodInjectCodeAttribute(String returnType) {
         //本地方法帧的操作数栈至少要能容纳返回值，
         //为了简化代码，暂时给maxStack字段赋值为4
@@ -70,6 +75,7 @@ public class Method extends ClassMember {
                 argSlotCount++;
             }
         }
+
         if (!isStatic()) {
             argSlotCount++; // `this` reference
         }
@@ -138,5 +144,10 @@ public class Method extends ClassMember {
             }
             return lineNumberTable.getLineNumber(pc);
 
+    }
+
+    public static Method newShimReturnMethod() {
+        //没做
+        return null;
     }
 }

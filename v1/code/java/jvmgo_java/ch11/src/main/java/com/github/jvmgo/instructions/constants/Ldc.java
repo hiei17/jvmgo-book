@@ -44,9 +44,10 @@ public class Ldc extends Index16Instruction {
         }else {
             //如果这个常量是字符串 那么去字符串池拿
             if(constant instanceof String){
+                //字符串池 也属于运行时常量池
                 constant = StringPool.JString(clazz.classLoader,(String) constant);
             }
-            //如果这个常量是类引用 那么它实际上要的是 这个类的class对象
+            //如果这个常量是类引用 那么它实际上要的是 这个类的 class对象
             else if(constant instanceof ClassRef){
                 constant=((ClassRef)constant).resolveClass().jClass;
             }

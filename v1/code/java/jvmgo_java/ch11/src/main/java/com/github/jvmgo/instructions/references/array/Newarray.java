@@ -31,8 +31,10 @@ public class Newarray implements Instruction {
 
         MyClassLoader classLoader = frame.getMethod().getClazz().classLoader;
 
+        //数组类
        ArrayClass arrClass = (ArrayClass) classLoader.loadClass(covert2ArrayClassName(atype));
 
+       //数组对象
         ArrayObject arr = arrClass.newArray(arrayLength);
         operandStack.push(arr);
     }

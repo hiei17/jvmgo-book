@@ -6,7 +6,7 @@ import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 import com.github.jvmgo.rtda.heap.ref.FieldRef;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 
 /**
  根据操作数index去运行时常量池拿到field,弹出一个值set进field值

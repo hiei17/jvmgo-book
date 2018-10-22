@@ -1,9 +1,7 @@
-package com.github.jvmgo.rtda.heap.ref;
+package com.github.jvmgo.rtda.heap;
 
 import com.github.jvmgo.classFile.constantPool.ConstantInfo;
 import com.github.jvmgo.classFile.constantPool.ConstantPool;
-import com.github.jvmgo.rtda.heap.CovertRuntimeConstant;
-import com.github.jvmgo.rtda.heap.CClass;
 import lombok.Getter;
 
 /**
@@ -11,7 +9,7 @@ import lombok.Getter;
  字面量包括整数、浮点数和字符串字面量；
  符号引用包括类符号引用、字段符号引用、方法符号引用和接口方法符号引用。
  */
-public class RuntimeConstantPool {
+public class RuntimeConstantPool {//属于方法区的一部分
 
     @Getter
     CClass clazz;//所属的类
@@ -25,7 +23,7 @@ public class RuntimeConstantPool {
         constants=new Object[len];
         for (int i = 1; i < constantInfos.length; i++) {
             ConstantInfo constantInfo = constantInfos[i];
-            if (constantInfo==null||! (constantInfo instanceof CovertRuntimeConstant)){
+            if (!(constantInfo instanceof CovertRuntimeConstant)){
                 continue;
             }
             constants[i]=((CovertRuntimeConstant)constantInfo).getValue(this);

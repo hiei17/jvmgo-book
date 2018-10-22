@@ -6,7 +6,7 @@ import com.github.jvmgo.rtda.Frame;
 import com.github.jvmgo.rtda.OperandStack;
 import com.github.jvmgo.rtda.heap.*;
 import com.github.jvmgo.rtda.heap.ref.FieldRef;
-import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
+import com.github.jvmgo.rtda.heap.RuntimeConstantPool;
 
 /**
  * @Author: panda
@@ -17,16 +17,16 @@ import com.github.jvmgo.rtda.heap.ref.RuntimeConstantPool;
 public class GetStatic extends Index16Instruction {
     @Override
     public void execute(Frame frame) {
-        if (frame.getThread().getPc()==19&&frame.getMethod().getName().equals("main")){
-            System.out.print("panda");
-        }
+
 
         //拿到运行时常量池
         RuntimeConstantPool runtimeConstantPool = frame.getMethod().getClazz().getRuntimeConstantPool();
         Field field= ((FieldRef) runtimeConstantPool.getConstant(index)).resolveField();
 
+        //注意 这里拿到的是 真正的类(可能是表明上写的那个类的接口或者祖先)
         CClass fieldClass=field.getClazz();
 
+        //初始化的只有真正这个field所在的字段 比如 son.fatheField 这样的 son里面的static块还是不会被执行
         if (!fieldClass.initStarted ){
             frame.revertNextPC();//pc恢复本指令执行以前 初始化以后会再进本Invokestatic
             ClassInitLogic.init(frame.getThread(), fieldClass);

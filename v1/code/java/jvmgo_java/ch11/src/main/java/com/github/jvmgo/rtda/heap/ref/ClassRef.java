@@ -12,14 +12,18 @@ public class ClassRef {
 
     //符号引用
     @Getter
-    private CClass userClass;
+    private CClass useClass;
     private String className;
 
     //虚拟机对第一次解析结果缓存
     private CClass clazz;
 
+    /**
+     *
+     * @param clazz 写这本应用的.class
+     */
     public ClassRef(CClass clazz, String className) {
-        userClass=clazz;
+        useClass =clazz;
         this.className=className;
     }
 
@@ -29,9 +33,9 @@ public class ClassRef {
 
         if(clazz==null){
 
-            MyClassLoader loader= userClass.classLoader;
+            MyClassLoader loader= useClass.classLoader;
             clazz= loader.loadClass(className);
-            if (!clazz.isAccessibleTo(userClass)) {
+            if (!clazz.isAccessibleTo(useClass)) {
                 throw new IllegalAccessError();
             }
         }

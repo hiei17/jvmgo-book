@@ -31,6 +31,8 @@ public class Return extends NoOperandsInstruction {
             case 2:
                 Object pop2 = executedFrame.getOperandStack().pop2();
                 waitReturnFrame.getOperandStack().pushLorD(pop2);
+                return;
+            default:
         }
 
     }

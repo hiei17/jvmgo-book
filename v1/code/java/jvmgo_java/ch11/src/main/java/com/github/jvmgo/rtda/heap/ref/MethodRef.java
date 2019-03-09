@@ -46,7 +46,7 @@ public class MethodRef {
                 throw new NoSuchMethodError();
             }
 
-            CClass userClass = classRef.getUserClass();
+            CClass userClass = classRef.getUseClass();
             if(!method.isAccessibleTo(userClass))  {
                 throw new IllegalAccessError();
             }

@@ -68,18 +68,22 @@ public class Classpath {
     public byte[] readClass(String className) throws Exception {
         className = className + ".class";
 
+
+        //C++ 写 加载核心类库java.*  默认 JRE\Iib\rt.jar 里面找
         try {
             return bootClasspath.readClass(className);
         } catch (Exception ignored) {
 
         }
 
+        //java 写 加载扩展库javax.* 默认RE\Iib\ext\*.jar 里面找
         try {
-            return bootClasspath.readClass(className);
+            return extClasspath.readClass(className);
         } catch (Exception ignored) {
 
         }
 
+        // 默认 CLASSPATH 里面找
         return userClasspath.readClass(className);
     }
 

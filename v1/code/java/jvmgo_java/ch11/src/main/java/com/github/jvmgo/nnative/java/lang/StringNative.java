@@ -17,7 +17,7 @@ public class StringNative {
             OObject thisStringObject = frame.getLocalVars().getRef(0);
             OObject interned=  StringPool.internString(thisStringObject);
             frame.getOperandStack().push(interned);
-        };
+        };String
         NativeMethod.register("java/lang/String", "intern", "()Ljava/lang/String;", intern);
     }
 

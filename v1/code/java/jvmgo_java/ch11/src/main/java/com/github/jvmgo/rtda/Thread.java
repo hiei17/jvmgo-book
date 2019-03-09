@@ -46,7 +46,7 @@ public class Thread {
     }
 
     public void clearStack() {
-        jvmStack.clearn();
+        jvmStack.clear();
     }
 
     public Frame[] getFrames(int skip) {

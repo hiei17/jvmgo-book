@@ -39,7 +39,7 @@ public class FieldRef {
                     throw new NoSuchFieldError();
 
                 }
-                if (!field.isAccessibleTo(classRef.getUserClass())) {
+                if (!field.isAccessibleTo(classRef.getUseClass())) {
                     throw new IllegalAccessError();
                 }
 

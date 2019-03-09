@@ -45,7 +45,7 @@ public class InterfaceMethodRef {
                 throw new NoSuchMethodError(name+" "+descriptor);
             }
 
-            CClass userClass = classRef.getUserClass();
+            CClass userClass = classRef.getUseClass();
             if(!method.isAccessibleTo(userClass))  {
                 throw new IllegalAccessError();
             }

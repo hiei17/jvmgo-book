@@ -85,7 +85,7 @@ public class MyClassLoader  {
     }
 
 
-    //懒加载
+    //懒加载: 就是本class应用的class先存个名字 字节码真的调用了 才来加载
     public CClass loadClass(String className){
 
         CClass clazz = classMap.get(className);
@@ -149,9 +149,11 @@ public class MyClassLoader  {
         //校验:元数据 字节码 符号引用
 
         //mark 连接2 准备
+        // 为  类变量 分配存储空间,并设初始值(默认值),如果是 static  final 会赋值
         prepare(classInfo);
 
         //mark 连接3 解析
+        //把常量池中的符号引用 转换成 直接引用
         //规范对时机没规定
         //我在 几个xxxRef文件 里面做
     }
@@ -170,7 +172,9 @@ public class MyClassLoader  {
         allocAndInitStaticVars(classInfo);
     }
 
+    //为类变量 分配空间 设初值
     private void allocAndInitStaticVars(CClass classInfo) {
+
         Object[] staticVars=new Object[classInfo.staticSlotCount];
         for (Field field : classInfo.getFields()) {
 

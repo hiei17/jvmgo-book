@@ -14,9 +14,10 @@ import com.github.jvmgo.rtda.heap.Method;
  * 按代码的顺序执行 ,如果类变量写在这之后 那么能赋值 但是不能访问(使用
  * 必须初始化:
  * 1.new 和 static 相关指令时 会检查类有没有初始化 如果没有 会先执行这里初始化 才能继续执行
- * 2.反射
+ * 2.反射 : Class.forName("类名") 就会加载类,链接,初始化
+ *  不像loadClass 只加载
  * 3.子类类初始化,如果它不是接口,会触发父类先
- * 4.main 最开始就会类加载
+ * 4.main 所在类最开始就会类加载
  * 5.jdk7 支持动态语言的情况
  */
 
@@ -33,7 +34,7 @@ import com.github.jvmgo.rtda.heap.Method;
  * public class Demo {
  *
  *  static {
- *      i=0;//定义之前可赋值
+ *      i=0;//定义之前可赋值,因为类加载的时候 这个i 就已经分配空间 赋默认值了
  *      System.out.print1n(i);//这句报错 Illegal forward reference 定义之前不可访问
  *
  *  }
@@ -66,7 +67,7 @@ public class ClassInitLogic {
             thread.pushFrame(initMethod);
         }
 
-        //mark  接口不需要想执行父类
+        //mark  接口不需要执行父类
         if (clazz.isInterface()) {
             return;
         }
